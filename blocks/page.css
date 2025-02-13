@@ -7,7 +7,7 @@
     background: #fcf5e5;
 }
 
-@media screen and (max-width: 925px) {
+@media screen and (max-width: 640px) {
     .page {
         width: 320px;
     }

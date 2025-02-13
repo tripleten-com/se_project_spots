@@ -17,7 +17,7 @@
     border: 0;
     line-height: 1;
     font-weight: 500;
-    width: 149px;
+    max-width: 149px;
     background-color: #212121;
     color: #fcf5e5;
     display: flex;
@@ -32,7 +32,13 @@
     height: 12px;
 }
 
-@media screen and (max-width: 925px) {
+@media screen and (max-width: 774px) and (min-width: 641px) {
+    .header__button {
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 640px) {
     .header {
         padding: 20px 16px 0;
     }
@@ -42,6 +48,7 @@
     }
 
     .header__button {
+        max-width: 100%;
         width: 100%;
         font-size: 16px;
         text-align: center;
