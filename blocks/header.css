@@ -25,11 +25,17 @@
     gap: 8px;
     padding: 18px 32px;
     align-self: flex-end;
+    transition: color 0.3s ease-in-out;
 }
 
 .header__button-sign {
     width: 12px;
     height: 12px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.header__button:hover {
+    color: #a9a6a6;
 }
 
 @media screen and (max-width: 774px) and (min-width: 641px) {
