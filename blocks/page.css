@@ -1,0 +1,8 @@
+.page {
+    max-width: 1440px;
+    margin: 0 auto;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    background: #fcf5e5;
+}

@@ -1,0 +1,52 @@
+.profile {
+    display: flex;
+    gap: 20px;
+}
+
+.profile__avatar {
+    border-radius: 8px;
+}
+
+.profile__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile__text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.profile__name {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 500;
+    color: #212121;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.profile__desc {
+    margin: 0;
+    font-size: 16px;
+    color: #212121b2;
+}
+
+.profile__edit-button {
+    border: 0;
+    background: none;
+    display: flex;
+    gap: 8px;
+    opacity: 70%;
+    align-self: flex-start;
+    align-items: center;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #212121;
+    justify-content: flex-start;
+}
