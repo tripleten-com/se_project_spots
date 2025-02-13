@@ -14,6 +14,7 @@
 
 .header__button {
     font-family: "Poppins", Arial, sans-serif;
+    border: 0;
     line-height: 1;
     font-weight: 500;
     width: 149px;
@@ -29,4 +30,23 @@
 .header__button-sign {
     width: 12px;
     height: 12px;
+}
+
+@media screen and (max-width: 925px) {
+    .header {
+        padding: 20px 16px 0;
+    }
+
+    .header__profile {
+        flex-direction: column;
+    }
+
+    .header__button {
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
 }

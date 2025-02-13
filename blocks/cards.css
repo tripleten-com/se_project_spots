@@ -29,15 +29,57 @@
 }
 
 .card__description {
+    max-width: 350px;
     margin: 0;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 1.2;
     align-self: flex-start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .card__like-icon {
     width: 23px;
     height: 20px;
+}
+
+@media screen and (max-width: 1320px) and (min-width: 926px) {
+    .cards {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+        justify-self: center;
+    }
+}
+
+@media screen and (max-width: 925px) {
+    .cards__container {
+        padding: 0 16px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .card {
+        justify-self: center;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .card__description {
+        font-size: 16px;
+        max-width: 265px;
+    }
+
+    .card__like-icon {
+        width: 20px;
+        height: 18px;
+    }
 }

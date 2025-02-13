@@ -32,6 +32,7 @@
 .profile__desc {
     margin: 0;
     font-size: 16px;
+    font-weight: 500;
     color: #212121b2;
 }
 
@@ -49,4 +50,39 @@
     font-size: 16px;
     color: #212121;
     justify-content: flex-start;
+}
+
+@media screen and (max-width: 925px) {
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .profile__avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile__content {
+        align-items: center;
+    }
+
+    .profile__text {
+        gap: 6px;
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .profile__name {
+        font-family: "Poppins", Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .profile__edit-button {
+        align-self: center;
+        margin-bottom: 20px;
+    }
 }
