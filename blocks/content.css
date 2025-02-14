@@ -1,4 +1,5 @@
 .content {
+    max-width: 1440px;
     padding: 0 80px;
 }
 
@@ -21,11 +22,11 @@
     border: 0;
     line-height: 1;
     font-weight: 500;
-    max-width: 149px;
     background-color: #212121;
     color: #fcf5e5;
     display: flex;
     border-radius: 8px;
+    align-items: center;
     gap: 8px;
     padding: 18px 32px;
     align-self: flex-end;
@@ -51,6 +52,7 @@
 @media screen and (max-width: 640px) {
     .content {
         padding: 0 16px;
+        max-width: 320px;
     }
 
     .content_header {
