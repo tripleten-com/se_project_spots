@@ -70,6 +70,7 @@
 
     .cards {
         grid-template-columns: minmax(200px, 1fr);
+        grid-auto-rows: auto;
     }
 
     .card {
