@@ -1,7 +1,3 @@
-.cards__container {
-    padding: 0 80px;
-}
-
 .cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
@@ -64,10 +60,6 @@
 }
 
 @media screen and (max-width: 640px) {
-    .cards__container {
-        padding: 0 16px;
-    }
-
     .cards {
         grid-template-columns: minmax(200px, 1fr);
         grid-auto-rows: auto;

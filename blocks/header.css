@@ -1,65 +1,7 @@
 .header {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    padding: 34px 80px 0;
-}
-
-.header__profile {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #21212166;
-    padding-bottom: 20px;
-}
-
-.header__button {
-    font-family: "Poppins", Arial, sans-serif;
-    border: 0;
-    line-height: 1;
-    font-weight: 500;
-    max-width: 149px;
-    background-color: #212121;
-    color: #fcf5e5;
-    display: flex;
-    border-radius: 8px;
-    gap: 8px;
-    padding: 18px 32px;
-    align-self: flex-end;
-    transition: color 0.3s ease-in-out;
-}
-
-.header__button-sign {
-    width: 12px;
-    height: 12px;
-    transition: filter 0.3s ease-in-out;
-}
-
-.header__button:hover {
-    color: #a9a6a6;
-}
-
-@media screen and (max-width: 774px) and (min-width: 641px) {
-    .header__button {
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    .header {
-        padding: 20px 16px 0;
-    }
-
-    .header__profile {
-        flex-direction: column;
-    }
-
-    .header__button {
-        max-width: 100%;
-        width: 100%;
-        font-size: 16px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-    }
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 80px;
 }
