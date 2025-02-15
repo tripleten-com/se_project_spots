@@ -1,5 +1,6 @@
 .page {
     width: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     font-family: "Poppins", Arial, sans-serif;
     font-size: 16px;
