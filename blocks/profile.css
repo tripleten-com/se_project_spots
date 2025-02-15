@@ -1,6 +1,15 @@
 .profile {
     display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #21212166;
+    padding-bottom: 20px;
+    margin-top: 34px;
+}
+
+.profile__container {
+    display: flex;
     gap: 20px;
+    max-width: 50%;
 }
 
 .profile__avatar {
@@ -18,7 +27,6 @@
     flex-direction: column;
     gap: 12px;
     font-family: "Poppins", Arial, sans-serif;
-    max-width: 420px;
 }
 
 .profile__name {
@@ -40,6 +48,7 @@
     font-size: 16px;
     font-weight: 500;
     color: #212121b2;
+    line-height: 1;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -60,19 +69,60 @@
     font-weight: 500;
     font-size: 16px;
     color: #212121;
+    line-height: 1;
     justify-content: flex-start;
-    transition: color 0.3s ease-in-out;
+
+    transition: opacity 0.3s ease-in-out;
 }
 
 .profile__edit-button:hover {
-    color: #a9a6a6;
+    opacity: 1.2;
+}
+
+.profile__new-post {
+    font-family: "Poppins", Arial, sans-serif;
+    border: 0;
+    line-height: 1;
+    font-weight: 500;
+    background-color: #212121;
+    color: #fcf5e5;
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 32px;
+    align-self: flex-end;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile__new-post-sign {
+    width: 12px;
+    height: 12px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.profile__new-post:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 774px) and (min-width: 641px) {
+    .profile__new-post {
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 640px) {
     .profile {
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile__container {
         flex-direction: column;
         align-items: center;
         gap: 12px;
+        max-width: 100%;
     }
 
     .profile__avatar {
@@ -88,6 +138,7 @@
         gap: 6px;
         text-align: center;
         margin-bottom: 32px;
+        max-width: 100%;
     }
 
     .profile__name {
@@ -98,5 +149,15 @@
     .profile__edit-button {
         align-self: center;
         margin-bottom: 20px;
+    }
+
+    .profile__new-post {
+        max-width: 100%;
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
     }
 }

@@ -10,9 +10,3 @@
     flex-direction: column;
     align-items: center;
 }
-
-@media screen and (max-width: 640px) {
-    /* .page {
-        width: 320px;
-    } */
-}
