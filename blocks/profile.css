@@ -108,7 +108,10 @@
 }
 
 @media screen and (max-width: 1100px) {
-    .profile__name,
+    .profile__name {
+        font-size: clamp(0.5rem, 7vw, 1.2rem);
+    }
+
     .profile__desc {
         font-size: clamp(0.5rem, 7vw, 1rem);
     }
