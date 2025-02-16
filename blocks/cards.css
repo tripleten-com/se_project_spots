@@ -10,8 +10,6 @@
 }
 
 .cards__card {
-    max-width: 100%;
-    aspect-ratio: 1 / 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -32,10 +30,5 @@
         grid-template-columns: minmax(200px, 1fr);
         grid-auto-rows: auto;
         padding-bottom: 20px;
-    }
-
-    .cards__card {
-        justify-self: center;
-        max-width: 100%;
     }
 }
