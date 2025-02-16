@@ -17,7 +17,7 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width: 1320px) and (min-width: 641px) {
+@media screen and (max-width: 1320px) {
     .cards {
         grid-template-columns: repeat(2, minmax(200px, 1fr));
     }

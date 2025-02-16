@@ -32,3 +32,4 @@ Techniques applied includes:
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 
 [Click here to open the website!](https://reondaze-a.github.io/se_project_spots/)
+[Video description of the project](https://drive.google.com/file/d/1tSJYw57G9SB7v26zIrl1sr2xu90qMuGv/view?usp=sharing)

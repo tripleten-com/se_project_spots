@@ -9,7 +9,7 @@
 .profile__container {
     display: flex;
     gap: 20px;
-    max-width: 50%;
+    max-width: 75%;
 }
 
 .profile__avatar {
@@ -27,6 +27,7 @@
     flex-direction: column;
     gap: 12px;
     font-family: "Poppins", Arial, sans-serif;
+    max-width: 100%;
 }
 
 .profile__name {
@@ -71,12 +72,12 @@
     color: #212121;
     line-height: 1;
     justify-content: flex-start;
-
+    cursor: pointer;
     transition: opacity 0.3s ease-in-out;
 }
 
 .profile__edit-button:hover {
-    opacity: 1.2;
+    opacity: 1;
 }
 
 .profile__new-post {
@@ -92,6 +93,7 @@
     gap: 8px;
     padding: 18px 32px;
     align-self: flex-end;
+    cursor: pointer;
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -105,7 +107,14 @@
     opacity: 0.8;
 }
 
-@media screen and (max-width: 774px) and (min-width: 641px) {
+@media screen and (max-width: 1100px) {
+    .profile__name,
+    .profile__desc {
+        font-size: clamp(0.5rem, 7vw, 1rem);
+    }
+}
+
+@media screen and (max-width: 774px) {
     .profile__new-post {
         align-items: center;
     }
@@ -143,7 +152,6 @@
 
     .profile__name {
         font-size: 20px;
-        line-height: 1;
     }
 
     .profile__edit-button {
@@ -156,7 +164,6 @@
         width: 100%;
         font-size: 16px;
         text-align: center;
-        display: flex;
         justify-content: center;
         align-items: baseline;
     }

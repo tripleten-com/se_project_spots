@@ -13,6 +13,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 1.2;
+    color: #212121;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -26,6 +27,7 @@
     background: none;
     display: flex;
     align-self: flex-end;
+    cursor: pointer;
 }
 
 .card__like-icon {
