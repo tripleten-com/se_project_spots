@@ -171,6 +171,48 @@
             <footer class="footer">
                 <p class="footer__text">2023 © Spots</p>
             </footer>
+
+            <!--Edit Profile/Modal-->
+            <div class="modal modal_opened">
+                <div class="modal__container">
+                    <div class="modal__header">
+                        <h2 class="modal__title">Edit Profile</h2>
+                        <button type="submit" class="modal__close-button">
+                            <img
+                                src="images/close-icon.svg"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content">
+                        <form name="edit-profile" class="modal__form">
+                            <label for="name" class="modal__label">
+                                Name
+                                <input
+                                    id="name"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Type your name"
+                                />
+                            </label>
+                            <label for="description" class="modal__label">
+                                Description
+                                <input
+                                    id="description"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Describe yourself"
+                                />
+                            </label>
+                            <button type="submit" class="modal__submit-button">
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Edit Profile/Modal-->
         </div>
         <script src="scripts/index.js" defer></script>
     </body>
