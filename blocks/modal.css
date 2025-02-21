@@ -2,15 +2,16 @@
     position: fixed;
     width: 100%;
     min-height: 100vh;
-    visibility: hidden;
     background: #00000080;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
 }
 
 .modal_opened {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
 }
 
 .modal__container {
