@@ -1,35 +1,16 @@
-@keyframes appear {
-    0% {
-        opacity: 0;
-    }
-    20% {
-        opacity: 0.2;
-    }
-    40% {
-        opacity: 0.4;
-    }
-    60% {
-        opacity: 0.6;
-    }
-    80% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .modal {
     position: fixed;
     width: 100%;
     min-height: 100vh;
     visibility: hidden;
     background: #00000080;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .modal_opened {
     visibility: visible;
-    animation: appear 0.1s ease-in-out 1;
+    opacity: 1;
 }
 
 .modal__container {
