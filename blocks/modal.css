@@ -9,7 +9,6 @@
 }
 
 .modal_opened {
-    visibility: visible;
     opacity: 1;
     pointer-events: auto;
 }
@@ -24,9 +23,8 @@
     background-color: #fff;
     padding: 32px 50px;
     border-radius: 8px;
-    max-width: 33%;
-    width: 33%;
-    min-width: 330px;
+    max-width: 730px;
+    min-width: 630px;
     z-index: 1;
 }
 
