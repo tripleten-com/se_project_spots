@@ -30,7 +30,6 @@ const profile = document.querySelector(".profile");
 const profileEditButton = profile.querySelector(".profile__edit-button");
 const modalCloseButton = modal.querySelector(".modal__close-button");
 const form = document.forms["profile-form"];
-const submitButton = form.querySelector(".modal__submit-button");
 const inputName = form.querySelector("#name");
 const inputDesc = form.querySelector("#description");
 const profileName = profile.querySelector(".profile__name");
@@ -47,12 +46,12 @@ function toggleModal() {
 
 profileEditButton.addEventListener("click", toggleModal);
 modalCloseButton.addEventListener("click", toggleModal);
-submitButton.addEventListener("click", toggleModal);
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileDesc.textContent = inputDesc.value;
+    toggleModal();
 }
 
 form.addEventListener("submit", handleProfileFormSubmit);
