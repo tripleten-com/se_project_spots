@@ -67,7 +67,7 @@ function newPostModal() {
     console.log("hey");
     modalTitle.textContent = "New post";
     modalLabelTitle[0].textContent = "Image link";
-    modalLabelTitle[1].textContent = "Description";
+    modalLabelTitle[1].textContent = "Caption";
 }
 
 profileEditButton.addEventListener("click", toggleModal);
