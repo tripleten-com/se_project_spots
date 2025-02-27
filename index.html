@@ -24,6 +24,7 @@
             <!--Content-->
             <main class="content">
                 <!--Profile-->
+
                 <section class="profile">
                     <div class="profile__container">
                         <img
@@ -84,11 +85,11 @@
                 <p class="footer__text">2023 © Spots</p>
             </footer>
 
-            <!--Edit Profile/Modal-->
+            <!--Modal-->
             <div class="modal" id="edit-modal">
                 <div class="modal__container">
                     <div class="modal__header">
-                        <h2 class="modal__title">Edit Profile</h2>
+                        <h2 class="modal__title"></h2>
                         <button type="button" class="modal__close-button">
                             <img
                                 src="images/close-icon.svg"
@@ -99,36 +100,36 @@
                     </div>
                     <div class="modal__content">
                         <form
-                            name="edit-profile"
+                            name="edit-input"
                             class="modal__form"
-                            id="profile-form"
+                            id="modal-form"
                         >
-                            <label for="name" class="modal__label">
-                                Name
+                            <label for="firstInput" class="modal__label">
+                                <p class="modal__label-title"></p>
                                 <input
-                                    id="name"
+                                    id="firstInput"
                                     type="text"
                                     class="modal__input"
-                                    placeholder="Type your name"
+                                    placeholder=""
                                 />
                             </label>
-                            <label for="description" class="modal__label">
-                                Description
+                            <label for="secondInput" class="modal__label">
+                                <p class="modal__label-title"></p>
                                 <input
-                                    id="description"
+                                    id="secondInput"
                                     type="text"
                                     class="modal__input"
-                                    placeholder="Describe yourself"
+                                    placeholder=""
                                 />
                             </label>
                             <button type="submit" class="modal__submit-button">
-                                Save
+                                <p class="modal__submit-button-text">Save</p>
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <!--Edit Profile/Modal-->
+            <!--Modal end-->
         </div>
         <script src="scripts/index.js" defer></script>
     </body>

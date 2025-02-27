@@ -28,33 +28,62 @@ const initialCards = [
 const modal = document.querySelector("#edit-modal");
 const profile = document.querySelector(".profile");
 const profileEditButton = profile.querySelector(".profile__edit-button");
+const profileNewPost = profile.querySelector(".profile__new-post");
 const modalCloseButton = modal.querySelector(".modal__close-button");
-const form = document.forms["profile-form"];
-const inputName = form.querySelector("#name");
-const inputDesc = form.querySelector("#description");
+const form = document.forms["modal-form"];
+const firstInput = form.querySelector("#firstInput");
+const secondInput = form.querySelector("#secondInput");
 const profileName = profile.querySelector(".profile__name");
 const profileDesc = profile.querySelector(".profile__desc");
 const cardsGrid = document.querySelector(".cards");
+const modalTitle = modal.querySelector(".modal__title");
+const modalLabelTitle = modal.querySelectorAll(".modal__label-title");
 
-function toggleModal() {
+// Modal functions
+
+function toggleModal(evt) {
     modal.classList.toggle("modal_opened");
-    if (modal.classList.contains("modal_opened")) {
-        inputName.value = profileName.textContent;
-        inputDesc.value = profileDesc.textContent;
+    if (evt.target.classList.contains("profile__edit-button")) {
+        form.reset();
+        editProfileModal();
+    } else if (evt.target.classList.contains("profile__new-post")) {
+        form.reset();
+        newPostModal();
+    } else if (evt.target.classList.contains("modal__close-button")) {
+        form.reset();
     }
 }
 
+function editProfileModal() {
+    console.log("hey");
+    modalTitle.textContent = "Edit profile";
+    modalLabelTitle[0].textContent = "Name";
+    modalLabelTitle[1].textContent = "Description";
+    firstInput.value = profileName.textContent;
+    secondInput.value = profileDesc.textContent;
+}
+
+function newPostModal() {
+    console.log("hey");
+    modalTitle.textContent = "New post";
+    modalLabelTitle[0].textContent = "Image link";
+    modalLabelTitle[1].textContent = "Description";
+}
+
 profileEditButton.addEventListener("click", toggleModal);
+profileNewPost.addEventListener("click", toggleModal);
 modalCloseButton.addEventListener("click", toggleModal);
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.textContent = inputName.value;
-    profileDesc.textContent = inputDesc.value;
     toggleModal();
 }
 
 form.addEventListener("submit", handleProfileFormSubmit);
+
+// Modal functions end
+// ---------------------------------------------------------------------
+// Render cards functions
 
 function getCardElement(elem) {
     const cardTemplate = document
@@ -78,3 +107,5 @@ function renderCards(data) {
 }
 
 renderCards(initialCards);
+
+// Render cards end
