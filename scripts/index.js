@@ -71,10 +71,10 @@ function getCardElement(elem) {
 }
 
 function renderCards(data) {
-    for (let elem of data) {
+    data.forEach((elem) => {
         const cardElement = getCardElement(elem);
         cardsGrid.append(cardElement);
-    }
+    });
 }
 
 renderCards(initialCards);
