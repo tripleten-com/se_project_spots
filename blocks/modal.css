@@ -140,6 +140,11 @@
     .modal__input {
         font-size: clamp(0.5rem, 7vw, 1.2rem);
     }
+
+    .modal__container {
+        width: 57%;
+        min-width: 30%;
+    }
 }
 
 @media screen and (max-width: 640px) {

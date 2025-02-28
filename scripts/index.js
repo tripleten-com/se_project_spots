@@ -77,16 +77,17 @@ function newPostModal() {
 }
 
 function handleProfileFormSubmit(evt) {
+    evt.preventDefault();
     console.log("Submitting changes");
+    profileName.textContent = firstInput.value;
+    profileDesc.textContent = secondInput.value;
+    toggleModal();
 }
 
 profileEditButton.addEventListener("click", handleModalOpen);
 profileNewPost.addEventListener("click", handleModalOpen);
 modalCloseButton.addEventListener("click", toggleModal);
-form.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    toggleModal(evt);
-});
+form.addEventListener("submit", handleProfileFormSubmit);
 
 // Modal functions end
 // ---------------------------------------------------------------------
