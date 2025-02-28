@@ -50,7 +50,8 @@ function toggleModal(evt) {
     if (
         evt.target.classList.contains("profile__edit-button") ||
         evt.target.classList.contains("profile__new-post") ||
-        evt.currentTarget.classList.contains("modal__close-button")
+        evt.currentTarget.classList.contains("modal__close-button") ||
+        evt.currentTarget.classList.contains("modal__form")
     ) {
         modalContainer.classList.toggle("modal_opened");
     }
@@ -120,7 +121,7 @@ function handleProfileFormSubmit(evt) {
         cardsGrid.prepend(cardElement);
     }
 
-    toggleModal();
+    toggleModal(evt);
     form.removeAttribute("data-modal-type");
 }
 
