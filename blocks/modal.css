@@ -8,12 +8,9 @@
     transition: opacity 0.2s ease;
 }
 
-.modal_opened {
-    opacity: 1;
-    pointer-events: auto;
-}
-
 .modal__container {
+    opacity: 0;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -26,6 +23,11 @@
     max-width: 730px;
     min-width: 630px;
     z-index: 1;
+}
+
+.modal_opened {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal__header {

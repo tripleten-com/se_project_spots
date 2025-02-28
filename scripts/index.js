@@ -26,6 +26,7 @@ const initialCards = [
 ];
 
 const modal = document.querySelector("#edit-modal");
+const modalContainer = modal.querySelector(".modal__container");
 const profile = document.querySelector(".profile");
 const profileEditButton = profile.querySelector(".profile__edit-button");
 const profileNewPost = profile.querySelector(".profile__new-post");
@@ -43,8 +44,16 @@ const inputFields = form.querySelectorAll(".modal__input");
 
 // Modal functions
 
-function toggleModal() {
+function toggleModal(evt) {
     modal.classList.toggle("modal_opened");
+    console.log(evt.currentTarget);
+    if (
+        evt.target.classList.contains("profile__edit-button") ||
+        evt.target.classList.contains("profile__new-post") ||
+        evt.currentTarget.classList.contains("modal__close-button")
+    ) {
+        modalContainer.classList.toggle("modal_opened");
+    }
 }
 
 function deactivateSubmitbutton() {
@@ -57,7 +66,7 @@ function activateSubmitbutton() {
 
 function handleModalOpen(evt) {
     form.reset();
-    toggleModal();
+    toggleModal(evt);
 
     if (evt.target.classList.contains("profile__edit-button")) {
         editProfileModal();
@@ -132,7 +141,22 @@ inputFields.forEach((input) => {
 
 // Modal functions end
 // ---------------------------------------------------------------------
-// Render cards functions
+// Cards functions
+
+function cardLiked(evt) {
+    if (evt.target.classList.contains("card__like-icon_liked")) {
+        evt.target.src = "images/like_icon.svg";
+        evt.target.classList.remove("card__like-icon_liked");
+    } else {
+        evt.target.src = "images/liked.svg";
+        evt.target.classList.add("card__like-icon_liked");
+    }
+}
+
+function cardDelete(evt) {
+    console.log;
+    evt.target.closest(".card").remove();
+}
 
 function getCardElement(elem) {
     const cardTemplate = document
@@ -141,7 +165,12 @@ function getCardElement(elem) {
 
     const cardImage = cardTemplate.querySelector(".card__image");
     const cardDesc = cardTemplate.querySelector(".card__description");
-
+    cardTemplate
+        .querySelector(".card__like-icon")
+        .addEventListener("click", cardLiked);
+    cardTemplate
+        .querySelector(".card__delete-button")
+        .addEventListener("click", cardDelete);
     cardImage.src = elem.link;
     cardImage.alt = elem.name;
     cardDesc.textContent = elem.name;
@@ -157,4 +186,4 @@ function renderCards(data) {
 
 renderCards(initialCards);
 
-// Render cards end
+// Cards functions end
