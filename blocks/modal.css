@@ -87,6 +87,10 @@
     color: #212121b2;
 }
 
+.modal__label-title {
+    margin: 0;
+}
+
 .modal__input {
     max-width: 100%;
     padding: 16px 12px;
@@ -128,9 +132,24 @@
     opacity: 0.8;
 }
 
+.modal__submit-button_disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+}
+
+.modal__submit-button-text {
+    margin: 0;
+}
+
 @media screen and (max-width: 1100px) {
     .modal__input {
         font-size: clamp(0.5rem, 7vw, 1.2rem);
+    }
+
+    .modal__container {
+        width: 57%;
+        min-width: 30%;
     }
 }
 

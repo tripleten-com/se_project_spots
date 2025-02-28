@@ -28,33 +28,111 @@ const initialCards = [
 const modal = document.querySelector("#edit-modal");
 const profile = document.querySelector(".profile");
 const profileEditButton = profile.querySelector(".profile__edit-button");
+const profileNewPost = profile.querySelector(".profile__new-post");
 const modalCloseButton = modal.querySelector(".modal__close-button");
-const form = document.forms["profile-form"];
-const inputName = form.querySelector("#name");
-const inputDesc = form.querySelector("#description");
+const form = document.forms["modal-form"];
+const firstInput = form.querySelector("#firstInput");
+const secondInput = form.querySelector("#secondInput");
 const profileName = profile.querySelector(".profile__name");
 const profileDesc = profile.querySelector(".profile__desc");
 const cardsGrid = document.querySelector(".cards");
+const modalTitle = modal.querySelector(".modal__title");
+const modalLabelTitle = modal.querySelectorAll(".modal__label-title");
+const modalSubmitButton = modal.querySelector(".modal__submit-button");
+const inputFields = form.querySelectorAll(".modal__input");
+
+// Modal functions
 
 function toggleModal() {
     modal.classList.toggle("modal_opened");
-    if (modal.classList.contains("modal_opened")) {
-        inputName.value = profileName.textContent;
-        inputDesc.value = profileDesc.textContent;
+}
+
+function deactivateSubmitbutton() {
+    modalSubmitButton.classList.add("modal__submit-button_disabled");
+}
+
+function activateSubmitbutton() {
+    modalSubmitButton.classList.remove("modal__submit-button_disabled");
+}
+
+function handleModalOpen(evt) {
+    form.reset();
+    toggleModal();
+
+    if (evt.target.classList.contains("profile__edit-button")) {
+        editProfileModal();
+        activateSubmitbutton();
+        form.setAttribute("data-modal-type", "edit-profile");
+    } else if (evt.target.classList.contains("profile__new-post")) {
+        deactivateSubmitbutton();
+        newPostModal();
+        form.setAttribute("data-modal-type", "new-post");
     }
 }
 
-profileEditButton.addEventListener("click", toggleModal);
-modalCloseButton.addEventListener("click", toggleModal);
+function editProfileModal() {
+    console.log("Profile Edit");
+    modalTitle.textContent = "Edit profile";
+    modalLabelTitle[0].textContent = "Name";
+    modalLabelTitle[1].textContent = "Description";
+    firstInput.value = profileName.textContent;
+    secondInput.value = profileDesc.textContent;
+    firstInput.placeholder = "Type your name";
+    secondInput.placeholder = "Describe yourself";
+}
+
+function newPostModal() {
+    console.log("Post Initiated");
+    modalTitle.textContent = "New post";
+    modalLabelTitle[0].textContent = "Image link";
+    modalLabelTitle[1].textContent = "Caption";
+    firstInput.placeholder = "Paste a link to the picture";
+    secondInput.placeholder = "Type your caption";
+}
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.textContent = inputName.value;
-    profileDesc.textContent = inputDesc.value;
+    const modalType = form.getAttribute("data-modal-type");
+
+    // Edit profile
+    if (modalType === "edit-profile") {
+        console.log("Saving profile changes...");
+        profileName.textContent = firstInput.value;
+        profileDesc.textContent = secondInput.value;
+
+        // New post
+    } else if (modalType === "new-post") {
+        console.log("Adding a new post...");
+        const newCard = {
+            name: secondInput.value,
+            link: firstInput.value,
+        };
+        const cardElement = getCardElement(newCard);
+        cardsGrid.prepend(cardElement);
+    }
+
     toggleModal();
+    form.removeAttribute("data-modal-type");
 }
 
+profileEditButton.addEventListener("click", handleModalOpen);
+profileNewPost.addEventListener("click", handleModalOpen);
+modalCloseButton.addEventListener("click", toggleModal);
 form.addEventListener("submit", handleProfileFormSubmit);
+
+inputFields.forEach((input) => {
+    input.addEventListener("input", function () {
+        if (firstInput.value.trim() === "" || secondInput.value.trim() === "") {
+            deactivateSubmitbutton();
+        } else {
+            activateSubmitbutton();
+        }
+    });
+});
+
+// Modal functions end
+// ---------------------------------------------------------------------
+// Render cards functions
 
 function getCardElement(elem) {
     const cardTemplate = document
@@ -78,3 +156,5 @@ function renderCards(data) {
 }
 
 renderCards(initialCards);
+
+// Render cards end
