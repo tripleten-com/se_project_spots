@@ -43,43 +43,50 @@ const modalLabelTitle = modal.querySelectorAll(".modal__label-title");
 
 function toggleModal(evt) {
     modal.classList.toggle("modal_opened");
+}
+
+function handleModalOpen(evt) {
+    form.reset();
+    toggleModal(); // Open modal
+
     if (evt.target.classList.contains("profile__edit-button")) {
-        form.reset();
         editProfileModal();
     } else if (evt.target.classList.contains("profile__new-post")) {
-        form.reset();
         newPostModal();
-    } else if (evt.target.classList.contains("modal__close-button")) {
-        form.reset();
     }
 }
 
 function editProfileModal() {
-    console.log("hey");
+    console.log("Profile Edit");
     modalTitle.textContent = "Edit profile";
     modalLabelTitle[0].textContent = "Name";
     modalLabelTitle[1].textContent = "Description";
     firstInput.value = profileName.textContent;
     secondInput.value = profileDesc.textContent;
+    firstInput.placeholder = "Type your name";
+    secondInput.placeholder = "Describe yourself";
 }
 
 function newPostModal() {
-    console.log("hey");
+    console.log("Post Initiated");
     modalTitle.textContent = "New post";
     modalLabelTitle[0].textContent = "Image link";
     modalLabelTitle[1].textContent = "Caption";
+    firstInput.placeholder = "Paste a link to the picture";
+    secondInput.placeholder = "Type your caption";
 }
-
-profileEditButton.addEventListener("click", toggleModal);
-profileNewPost.addEventListener("click", toggleModal);
-modalCloseButton.addEventListener("click", toggleModal);
 
 function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    toggleModal();
+    console.log("Submitting changes");
 }
 
-form.addEventListener("submit", handleProfileFormSubmit);
+profileEditButton.addEventListener("click", handleModalOpen);
+profileNewPost.addEventListener("click", handleModalOpen);
+modalCloseButton.addEventListener("click", toggleModal);
+form.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    toggleModal(evt);
+});
 
 // Modal functions end
 // ---------------------------------------------------------------------
