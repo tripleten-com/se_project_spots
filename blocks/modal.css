@@ -132,6 +132,12 @@
     opacity: 0.8;
 }
 
+.modal__submit-button_disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+}
+
 .modal__submit-button-text {
     margin: 0;
 }

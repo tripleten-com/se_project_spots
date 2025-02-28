@@ -38,21 +38,35 @@ const profileDesc = profile.querySelector(".profile__desc");
 const cardsGrid = document.querySelector(".cards");
 const modalTitle = modal.querySelector(".modal__title");
 const modalLabelTitle = modal.querySelectorAll(".modal__label-title");
+const modalSubmitButton = modal.querySelector(".modal__submit-button");
+const inputFields = form.querySelectorAll(".modal__input");
 
 // Modal functions
 
-function toggleModal(evt) {
+function toggleModal() {
     modal.classList.toggle("modal_opened");
+}
+
+function deactivateSubmitbutton() {
+    modalSubmitButton.classList.add("modal__submit-button_disabled");
+}
+
+function activateSubmitbutton() {
+    modalSubmitButton.classList.remove("modal__submit-button_disabled");
 }
 
 function handleModalOpen(evt) {
     form.reset();
-    toggleModal(); // Open modal
+    toggleModal();
 
     if (evt.target.classList.contains("profile__edit-button")) {
         editProfileModal();
+        activateSubmitbutton();
+        form.setAttribute("data-modal-type", "edit-profile");
     } else if (evt.target.classList.contains("profile__new-post")) {
+        deactivateSubmitbutton();
         newPostModal();
+        form.setAttribute("data-modal-type", "new-post");
     }
 }
 
@@ -78,16 +92,43 @@ function newPostModal() {
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    console.log("Submitting changes");
-    profileName.textContent = firstInput.value;
-    profileDesc.textContent = secondInput.value;
+    const modalType = form.getAttribute("data-modal-type");
+
+    // Edit profile
+    if (modalType === "edit-profile") {
+        console.log("Saving profile changes...");
+        profileName.textContent = firstInput.value;
+        profileDesc.textContent = secondInput.value;
+
+        // New post
+    } else if (modalType === "new-post") {
+        console.log("Adding a new post...");
+        const newCard = {
+            name: secondInput.value,
+            link: firstInput.value,
+        };
+        const cardElement = getCardElement(newCard);
+        cardsGrid.prepend(cardElement);
+    }
+
     toggleModal();
+    form.removeAttribute("data-modal-type");
 }
 
 profileEditButton.addEventListener("click", handleModalOpen);
 profileNewPost.addEventListener("click", handleModalOpen);
 modalCloseButton.addEventListener("click", toggleModal);
 form.addEventListener("submit", handleProfileFormSubmit);
+
+inputFields.forEach((input) => {
+    input.addEventListener("input", function () {
+        if (firstInput.value.trim() === "" || secondInput.value.trim() === "") {
+            deactivateSubmitbutton();
+        } else {
+            activateSubmitbutton();
+        }
+    });
+});
 
 // Modal functions end
 // ---------------------------------------------------------------------
