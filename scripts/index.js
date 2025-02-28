@@ -1,5 +1,9 @@
 const initialCards = [
     {
+        name: "Golden gate bridge",
+        link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+    },
+    {
         name: "Val Thorens",
         link: "images/1-photo-by-moritz-feldmann-from-pexels.jpg",
     },
@@ -25,36 +29,39 @@ const initialCards = [
     },
 ];
 
+// Modal Variables
 const modal = document.querySelector("#edit-modal");
 const modalContainer = modal.querySelector(".modal__container");
-const profile = document.querySelector(".profile");
-const profileEditButton = profile.querySelector(".profile__edit-button");
-const profileNewPost = profile.querySelector(".profile__new-post");
-const modalCloseButton = modal.querySelector(".modal__close-button");
-const form = document.forms["modal-form"];
-const firstInput = form.querySelector("#firstInput");
-const secondInput = form.querySelector("#secondInput");
-const profileName = profile.querySelector(".profile__name");
-const profileDesc = profile.querySelector(".profile__desc");
-const cardsGrid = document.querySelector(".cards");
 const modalTitle = modal.querySelector(".modal__title");
 const modalLabelTitle = modal.querySelectorAll(".modal__label-title");
 const modalSubmitButton = modal.querySelector(".modal__submit-button");
+const modalCloseButton = modal.querySelector(".modal__close-button");
+
+// Profile Variables
+const profile = document.querySelector(".profile");
+const profileEditButton = profile.querySelector(".profile__edit-button");
+const profileNewPost = profile.querySelector(".profile__new-post");
+const profileName = profile.querySelector(".profile__name");
+const profileDesc = profile.querySelector(".profile__desc");
+
+// Cards Variables
+const cardsGrid = document.querySelector(".cards");
+const cardImage = document.querySelector(".show-image__image");
+
+// Form Variables
+const form = document.forms["modal-form"];
 const inputFields = form.querySelectorAll(".modal__input");
+const firstInput = form.querySelector("#firstInput");
+const secondInput = form.querySelector("#secondInput");
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 // Modal functions
 
 function toggleModal(evt) {
     modal.classList.toggle("modal_opened");
-    console.log(evt.currentTarget);
-    if (
-        evt.target.classList.contains("profile__edit-button") ||
-        evt.target.classList.contains("profile__new-post") ||
-        evt.currentTarget.classList.contains("modal__close-button") ||
-        evt.currentTarget.classList.contains("modal__form")
-    ) {
-        modalContainer.classList.toggle("modal_opened");
-    }
+    modalContainer.classList.toggle("modal_opened");
 }
 
 function deactivateSubmitbutton() {
@@ -125,10 +132,21 @@ function handleProfileFormSubmit(evt) {
     form.removeAttribute("data-modal-type");
 }
 
+function showImage(evt) {
+    console.log(evt.target);
+    modal.classList.toggle("modal_opened");
+    cardImage.src = evt.target.src;
+}
+
 profileEditButton.addEventListener("click", handleModalOpen);
 profileNewPost.addEventListener("click", handleModalOpen);
 modalCloseButton.addEventListener("click", toggleModal);
 form.addEventListener("submit", handleProfileFormSubmit);
+cardsGrid.addEventListener("click", function (evt) {
+    if (evt.target.classList.contains("card__image")) {
+        showImage(evt);
+    }
+});
 
 inputFields.forEach((input) => {
     input.addEventListener("input", function () {
