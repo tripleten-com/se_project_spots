@@ -8,7 +8,7 @@
 
 **Intro**
 
-This project is a social media app layout called Spots. The main goal of this project is applying a responsive design to the webpage so that it fits multiple screen layouts.
+This project is a social media app layout called Spots. The main goal of this project is applying a responsive design to the webpage with HTML & CSS, as well having functional buttons and forms with their intended use through the application of functions from Javascript.
 
 **Languages & Techniques**
 
@@ -26,4 +26,4 @@ Techniques applied includes:
 
 -   [Click here to open the website!](https://reondaze-a.github.io/se_project_spots/)
 
--   [Video description of the project](https://drive.google.com/file/d/1tSJYw57G9SB7v26zIrl1sr2xu90qMuGv/view?usp=sharing)
+-   [Video description of the project](https://drive.google.com/file/d/1tSJYw57G9SB7v26zIrl1sr2xu90qMuGv/view?usp=sharing) (_Old video_)
