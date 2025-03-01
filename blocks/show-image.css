@@ -5,6 +5,9 @@
     transform: translate(-50%, -50%);
     padding: 10px;
     box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
 }
 
 .show-image__image {

@@ -47,7 +47,8 @@ const profileDesc = profile.querySelector(".profile__desc");
 // Cards Variables
 const cardsGrid = document.querySelector(".cards");
 const cardImage = document.querySelector(".show-image__image");
-const cardCloseButton = document.querySelector(".show-image__close-button");
+const showImage = document.querySelector(".show-image");
+const cardCloseButton = showImage.querySelector(".show-image__close-button");
 
 // Form Variables
 const form = document.forms["modal-form"];
@@ -133,15 +134,19 @@ function handleProfileFormSubmit(evt) {
     form.removeAttribute("data-modal-type");
 }
 
-function showImage(evt) {
-    console.log(evt.target);
-    modal.classList.toggle("modal_opened");
+function popImage(evt) {
     cardImage.src = evt.target.src;
+    cardImage.alt = evt.target.alt;
+    modal.classList.add("modal_opened");
+    showImage.classList.add("modal_opened");
 }
 
 function closeImage(evt) {
-    modal.classList.toggle("modal_opened");
-    cardImage.src = "";
+    modal.classList.remove("modal_opened");
+    showImage.classList.remove("modal_opened");
+    setTimeout(() => {
+        cardImage.src = "";
+    }, 220);
 }
 
 profileEditButton.addEventListener("click", handleModalOpen);
@@ -152,7 +157,7 @@ form.addEventListener("submit", handleProfileFormSubmit);
 cardCloseButton.addEventListener("click", closeImage);
 cardsGrid.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("card__image")) {
-        showImage(evt);
+        popImage(evt);
     }
 });
 
