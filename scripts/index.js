@@ -47,6 +47,7 @@ const profileDesc = profile.querySelector(".profile__desc");
 // Cards Variables
 const cardsGrid = document.querySelector(".cards");
 const cardImage = document.querySelector(".show-image__image");
+const cardCloseButton = document.querySelector(".show-image__close-button");
 
 // Form Variables
 const form = document.forms["modal-form"];
@@ -138,10 +139,17 @@ function showImage(evt) {
     cardImage.src = evt.target.src;
 }
 
+function closeImage(evt) {
+    modal.classList.toggle("modal_opened");
+    cardImage.src = "";
+}
+
 profileEditButton.addEventListener("click", handleModalOpen);
 profileNewPost.addEventListener("click", handleModalOpen);
 modalCloseButton.addEventListener("click", toggleModal);
 form.addEventListener("submit", handleProfileFormSubmit);
+
+cardCloseButton.addEventListener("click", closeImage);
 cardsGrid.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("card__image")) {
         showImage(evt);
