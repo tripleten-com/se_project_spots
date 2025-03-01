@@ -36,3 +36,11 @@
 
 .show-image__close-button-icon {
 }
+
+@media screen and (max-width: 640px) {
+    .show-image__close-button {
+        position: fixed;
+        top: -32.5px;
+        right: 5px;
+    }
+}
