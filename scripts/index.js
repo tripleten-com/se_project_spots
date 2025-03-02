@@ -30,10 +30,12 @@ const initialCards = [
 ];
 
 // Modal Variables
-const modal = document.querySelector("#edit-modal");
+const modal = document.querySelector(".modal");
+const profileModal = document.querySelector("#profile-modal");
+const newPostModal = document.querySelector("#new-post-modal");
 const modalContainer = modal.querySelector(".modal__container");
 const modalTitle = modal.querySelector(".modal__title");
-const modalLabelTitle = modal.querySelectorAll(".modal__label-title");
+const modalLabel = modal.querySelectorAll(".modal__label-title");
 const modalSubmitButton = modal.querySelector(".modal__submit-button");
 const modalCloseButton = modal.querySelector(".modal__close-button");
 

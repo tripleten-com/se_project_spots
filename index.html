@@ -92,9 +92,54 @@
                 <p class="footer__text">2023 © Spots</p>
             </footer>
 
-            <!--Modal-->
-            <div class="modal" id="edit-modal">
-                <!--Profile & Add Post-->
+            <!--Modals-->
+
+            <!--Profile Modal-->
+            <div class="modal" id="profile-modal">
+                <div class="modal__container" id="profile-modal">
+                    <div class="modal__header">
+                        <h2 class="modal__title"></h2>
+                        <button type="button" class="modal__close-button">
+                            <img
+                                src="images/close-icon.svg"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content">
+                        <form
+                            name="edit-input"
+                            class="modal__form"
+                            id="modal-form"
+                        >
+                            <label for="firstInput" class="modal__label">
+                                <input
+                                    id="firstInput"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Type your name"
+                                />
+                            </label>
+                            <label for="secondInput" class="modal__label">
+                                <input
+                                    id="secondInput"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Describe yourself"
+                                />
+                            </label>
+                            <button type="submit" class="modal__submit-button">
+                                <p class="modal__submit-button-text">Save</p>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Profile Modal end-->
+
+            <!--Post Modal-->
+            <div class="modal" id="new-post-modal">
                 <div class="modal__container">
                     <div class="modal__header">
                         <h2 class="modal__title"></h2>
@@ -113,21 +158,19 @@
                             id="modal-form"
                         >
                             <label for="firstInput" class="modal__label">
-                                <p class="modal__label-title"></p>
                                 <input
                                     id="firstInput"
                                     type="text"
                                     class="modal__input"
-                                    placeholder=""
+                                    placeholder="Paste a link to the picture"
                                 />
                             </label>
                             <label for="secondInput" class="modal__label">
-                                <p class="modal__label-title"></p>
                                 <input
                                     id="secondInput"
                                     type="text"
                                     class="modal__input"
-                                    placeholder=""
+                                    placeholder="Type your caption"
                                 />
                             </label>
                             <button type="submit" class="modal__submit-button">
@@ -136,9 +179,11 @@
                         </form>
                     </div>
                 </div>
-                <!--Profile & Add Post end-->
+            </div>
+            <!--Post Modal end-->
 
-                <!--Picture Modal-->
+            <!--Picture Modal-->
+            <div class="modal" id="show-image-modal">
                 <div class="show-image">
                     <img src="" alt="" class="show-image__image" />
                     <button class="show-image__close-button">
@@ -149,8 +194,8 @@
                         />
                     </button>
                 </div>
-                <!--Picture Modal-->
             </div>
+            <!--Picture Modal-->
             <!--Modal end-->
         </div>
         <script src="scripts/index.js" defer></script>

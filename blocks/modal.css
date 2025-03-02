@@ -89,10 +89,6 @@
     color: #212121b2;
 }
 
-.modal__label-title {
-    margin: 0;
-}
-
 .modal__input {
     max-width: 100%;
     padding: 16px 12px;
