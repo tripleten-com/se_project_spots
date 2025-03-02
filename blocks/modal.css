@@ -9,8 +9,6 @@
 }
 
 .modal__container {
-    opacity: 0;
-    pointer-events: none;
     display: flex;
     flex-direction: column;
     position: fixed;

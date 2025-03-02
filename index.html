@@ -98,7 +98,7 @@
             <div class="modal" id="profile-modal">
                 <div class="modal__container" id="profile-modal">
                     <div class="modal__header">
-                        <h2 class="modal__title"></h2>
+                        <h2 class="modal__title">Edit profile</h2>
                         <button type="button" class="modal__close-button">
                             <img
                                 src="images/close-icon.svg"
@@ -111,19 +111,21 @@
                         <form
                             name="edit-input"
                             class="modal__form"
-                            id="modal-form"
+                            id="edit-profile-form"
                         >
-                            <label for="firstInput" class="modal__label">
+                            <label for="name" class="modal__label">
+                                Name
                                 <input
-                                    id="firstInput"
+                                    id="name"
                                     type="text"
                                     class="modal__input"
                                     placeholder="Type your name"
                                 />
                             </label>
-                            <label for="secondInput" class="modal__label">
+                            <label for="description" class="modal__label">
+                                Description
                                 <input
-                                    id="secondInput"
+                                    id="description"
                                     type="text"
                                     class="modal__input"
                                     placeholder="Describe yourself"
@@ -142,7 +144,7 @@
             <div class="modal" id="new-post-modal">
                 <div class="modal__container">
                     <div class="modal__header">
-                        <h2 class="modal__title"></h2>
+                        <h2 class="modal__title">New post</h2>
                         <button type="button" class="modal__close-button">
                             <img
                                 src="images/close-icon.svg"
@@ -155,25 +157,31 @@
                         <form
                             name="edit-input"
                             class="modal__form"
-                            id="modal-form"
+                            id="new-post-form"
                         >
-                            <label for="firstInput" class="modal__label">
+                            <label for="post-link" class="modal__label">
+                                Image link
                                 <input
-                                    id="firstInput"
+                                    id="post-link"
                                     type="text"
                                     class="modal__input"
                                     placeholder="Paste a link to the picture"
                                 />
                             </label>
-                            <label for="secondInput" class="modal__label">
+                            <label for="post-caption" class="modal__label">
+                                Caption
                                 <input
-                                    id="secondInput"
+                                    id="post-caption"
                                     type="text"
                                     class="modal__input"
                                     placeholder="Type your caption"
                                 />
                             </label>
-                            <button type="submit" class="modal__submit-button">
+                            <button
+                                type="submit"
+                                class="modal__submit-button modal__submit-button_disabled"
+                                disabled
+                            >
                                 <p class="modal__submit-button-text">Save</p>
                             </button>
                         </form>
@@ -183,14 +191,14 @@
             <!--Post Modal end-->
 
             <!--Picture Modal-->
-            <div class="modal" id="show-image-modal">
-                <div class="show-image">
-                    <img src="" alt="" class="show-image__image" />
-                    <button class="show-image__close-button">
+            <div class="modal" id="preview-modal">
+                <div class="modal__preview">
+                    <img src="" alt="" class="modal__image" />
+                    <button type="button" class="modal__close-button">
                         <img
-                            src="images/close-icon-white.svg"
+                            src="images/close-icon.svg"
                             alt="close-button"
-                            class="show-image__close-button-icon"
+                            class="modal__close-button-icon"
                         />
                     </button>
                 </div>
