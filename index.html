@@ -93,7 +93,7 @@
 
             <!--Profile Modal-->
             <div class="modal" id="profile-modal">
-                <div class="modal__container" id="profile-modal">
+                <div class="modal__container">
                     <div class="modal__header">
                         <h2 class="modal__title">Edit profile</h2>
                         <button type="button" class="modal__close-button">
@@ -129,7 +129,7 @@
                                 />
                             </label>
                             <button type="submit" class="modal__submit-button">
-                                <p class="modal__submit-button-text">Save</p>
+                                Save
                             </button>
                         </form>
                     </div>
@@ -179,7 +179,7 @@
                                 class="modal__submit-button modal__submit-button_disabled"
                                 disabled
                             >
-                                <p class="modal__submit-button-text">Save</p>
+                                Save
                             </button>
                         </form>
                     </div>
@@ -190,7 +190,11 @@
             <!--Picture Modal-->
             <div class="modal" id="preview-modal">
                 <div class="modal__preview">
-                    <img src="" alt="" class="modal__image" />
+                    <img
+                        src="images/avatar.jpg"
+                        alt="blank"
+                        class="modal__image"
+                    />
                     <button
                         type="button"
                         class="modal__close-button modal__close-button-image"
@@ -201,6 +205,9 @@
                             class="modal__close-button-icon"
                         />
                     </button>
+                    <div class="modal__image-caption-container">
+                        <p class="modal__image-caption"></p>
+                    </div>
                 </div>
             </div>
             <!--Picture Modal-->

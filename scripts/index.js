@@ -39,17 +39,15 @@ const editProfileCloseButton = editProfileModal.querySelector(
     ".modal__close-button"
 );
 
-const closeButtons = document.querySelectorAll(".modal__close-button");
-
 /// New Post Modal
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
-const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
 
 /// Preview Modal
 const previewModal = document.querySelector("#preview-modal");
 const previewCloseButton = previewModal.querySelector(".modal__close-button");
-const cardImage = previewModal.querySelector(".modal__image");
+const previewCaption = previewModal.querySelector(".modal__image-caption");
+const modalImage = previewModal.querySelector(".modal__image");
 
 // Profile Variables
 const profile = document.querySelector(".profile");
@@ -66,6 +64,13 @@ const editProfileForm = editProfileModal.querySelector(".modal__form");
 const newPostForm = newPostModal.querySelector(".modal__form");
 const editProfileInputs = editProfileForm.querySelectorAll(".modal__input");
 const newPostInputs = newPostForm.querySelectorAll(".modal__input");
+const editProfileName = editProfileForm.querySelector("#name");
+const editProfileDesc = editProfileForm.querySelector("#description");
+const newPostLink = newPostForm.querySelector("#post-link");
+const newPostCapt = newPostForm.querySelector("#post-caption");
+
+// Close buttons
+const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // ---------------------------------------------------------------------
 // ---------------------------------------------------------------------
@@ -76,16 +81,16 @@ function toggleModal(modal) {
     modal.classList.toggle("modal_opened");
 }
 
-function handleOpenModal(evt) {
-    if (evt.target === profileEditButton) {
-        editProfileInputs[0].value = profileName.textContent;
-        editProfileInputs[1].value = profileDesc.textContent;
-        toggleModal(editProfileModal);
-        toggleSubmitButton(editProfileInputs, editProfileSubmitButton);
-    } else {
-        toggleModal(newPostModal);
-        toggleSubmitButton(newPostInputs, newPostSubmitButton);
-    }
+function handleOpenModalProfile() {
+    editProfileName.value = profileName.textContent;
+    editProfileDesc.value = profileDesc.textContent;
+    toggleModal(editProfileModal);
+    toggleSubmitButton(editProfileInputs, editProfileSubmitButton);
+}
+
+function handleOpenModalNewPost() {
+    toggleModal(newPostModal);
+    toggleSubmitButton(newPostInputs, newPostSubmitButton);
 }
 
 function deactivateSubmitbutton(btn) {
@@ -98,10 +103,10 @@ function activateSubmitbutton(btn) {
     btn.disabled = false;
 }
 
-function toggleSubmitButton(inputField, submitButton) {
-    inputField.forEach((input) => {
+function toggleSubmitButton(inputFields, submitButton) {
+    inputFields.forEach((input) => {
         input.addEventListener("input", function () {
-            const allFilled = [...inputField].every(
+            const allFilled = [...inputFields].every(
                 (field) => field.value.trim() !== ""
             );
 
@@ -116,16 +121,16 @@ function toggleSubmitButton(inputField, submitButton) {
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.textContent = editProfileInputs[0].value;
-    profileDesc.textContent = editProfileInputs[1].value;
+    profileName.textContent = editProfileName.value;
+    profileDesc.textContent = editProfileDesc.value;
     toggleModal(editProfileModal);
 }
 
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const newCard = {
-        link: newPostInputs[0].value,
-        name: newPostInputs[1].value,
+        link: newPostLink.value,
+        name: newPostCapt.value,
     };
     const cardElement = getCardElement(newCard);
     cardsGrid.prepend(cardElement);
@@ -134,8 +139,9 @@ function handleCardFormSubmit(evt) {
 }
 
 function handlePreviewModal(evt) {
-    cardImage.src = evt.target.src;
-    cardImage.alt = evt.target.alt;
+    modalImage.src = evt.target.src;
+    modalImage.alt = evt.target.alt;
+    previewCaption.textContent = evt.target.alt;
     toggleModal(previewModal);
 }
 
@@ -144,14 +150,8 @@ closeButtons.forEach((button) => {
     button.addEventListener("click", () => toggleModal(modal));
 });
 
-cardsGrid.addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("card__image")) {
-        handlePreviewModal(evt);
-    }
-});
-
-profileEditButton.addEventListener("click", handleOpenModal);
-profileNewPost.addEventListener("click", handleOpenModal);
+profileEditButton.addEventListener("click", handleOpenModalProfile);
+profileNewPost.addEventListener("click", handleOpenModalNewPost);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPostForm.addEventListener("submit", handleCardFormSubmit);
 
@@ -180,6 +180,7 @@ function getCardElement(elem) {
     cardTemplate
         .querySelector(".card__delete-button")
         .addEventListener("click", cardDelete);
+    cardImage.addEventListener("click", handlePreviewModal);
     cardImage.src = elem.link;
     cardImage.alt = elem.name;
     cardDesc.textContent = elem.name;
