@@ -39,6 +39,8 @@ const editProfileCloseButton = editProfileModal.querySelector(
     ".modal__close-button"
 );
 
+const closeButtons = document.querySelectorAll(".modal__close-button");
+
 /// New Post Modal
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
@@ -60,9 +62,10 @@ const profileDesc = profile.querySelector(".profile__desc");
 const cardsGrid = document.querySelector(".cards");
 
 // Form Variables
-const form = document.forms["modal-form"];
-const editProfileInputs = editProfileModal.querySelectorAll(".modal__input");
-const newPostInputs = newPostModal.querySelectorAll(".modal__input");
+const editProfileForm = editProfileModal.querySelector(".modal__form");
+const newPostForm = newPostModal.querySelector(".modal__form");
+const editProfileInputs = editProfileForm.querySelectorAll(".modal__input");
+const newPostInputs = newPostForm.querySelectorAll(".modal__input");
 
 // ---------------------------------------------------------------------
 // ---------------------------------------------------------------------
@@ -111,43 +114,53 @@ function toggleSubmitButton(inputField, submitButton) {
     });
 }
 
-function handleSubmitForm(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    if (evt.target === editProfileSubmitButton) {
-        profileName.textContent = editProfileInputs[0].value;
-        profileDesc.textContent = editProfileInputs[1].value;
-    } else {
-        const newCard = {
-            name: newPostInputs[1].value,
-            link: newPostInputs[0].value,
-        };
-        const cardElement = getCardElement(newCard);
-        cardsGrid.prepend(cardElement);
-    }
-    toggleModal(evt.target.closest(".modal"));
+    profileName.textContent = editProfileInputs[0].value;
+    profileDesc.textContent = editProfileInputs[1].value;
+    toggleModal(editProfileModal);
 }
+
+function handleCardFormSubmit(evt) {
+    evt.preventDefault();
+    const newCard = {
+        link: newPostInputs[0].value,
+        name: newPostInputs[1].value,
+    };
+    const cardElement = getCardElement(newCard);
+    cardsGrid.prepend(cardElement);
+    newPostForm.reset();
+    toggleModal(newPostModal);
+}
+
+function handlePreviewModal(evt) {
+    cardImage.src = evt.target.src;
+    cardImage.alt = evt.target.alt;
+    toggleModal(previewModal);
+}
+
+closeButtons.forEach((button) => {
+    const modal = button.closest(".modal");
+    button.addEventListener("click", () => toggleModal(modal));
+});
+
+cardsGrid.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("card__image")) {
+        handlePreviewModal(evt);
+    }
+});
 
 profileEditButton.addEventListener("click", handleOpenModal);
 profileNewPost.addEventListener("click", handleOpenModal);
-editProfileCloseButton.addEventListener("click", () =>
-    toggleModal(editProfileModal)
-);
-newPostCloseButton.addEventListener("click", () => toggleModal(newPostModal));
-editProfileSubmitButton.addEventListener("click", handleSubmitForm);
-newPostSubmitButton.addEventListener("click", handleSubmitForm);
+editProfileForm.addEventListener("submit", handleProfileFormSubmit);
+newPostForm.addEventListener("submit", handleCardFormSubmit);
 
 // Modal functions end
 // ---------------------------------------------------------------------
 // Cards functions
 
 function cardLiked(evt) {
-    if (evt.target.classList.contains("card__like-icon_liked")) {
-        evt.target.src = "images/like_icon.svg";
-        evt.target.classList.remove("card__like-icon_liked");
-    } else {
-        evt.target.src = "images/liked.svg";
-        evt.target.classList.add("card__like-icon_liked");
-    }
+    evt.target.classList.toggle("card__like-button_liked");
 }
 
 function cardDelete(evt) {
@@ -162,7 +175,7 @@ function getCardElement(elem) {
     const cardImage = cardTemplate.querySelector(".card__image");
     const cardDesc = cardTemplate.querySelector(".card__description");
     cardTemplate
-        .querySelector(".card__like-icon")
+        .querySelector(".card__like-button")
         .addEventListener("click", cardLiked);
     cardTemplate
         .querySelector(".card__delete-button")
