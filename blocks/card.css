@@ -32,32 +32,30 @@
 }
 
 .card__like-button {
-    width: fit-content;
-    height: fit-content;
+    width: 23px;
+    height: 20px;
+    opacity: 0.4;
+    transition: opacity 0.2s ease-in-out;
     border: 0;
     padding: 0;
     background: none;
     display: flex;
     align-self: flex-end;
     cursor: pointer;
+    background: url("../images/like_icon.svg") no-repeat center;
 }
 
-.card__like-icon {
-    width: 23px;
-    height: 20px;
-    opacity: 0.4;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.card__like-icon:hover {
+.card__like-button:hover {
     opacity: 1;
 }
 
-.card__like-icon_liked {
+.card__like-button_liked {
+    background: url("../images/liked.svg") no-repeat center;
+    background-repeat: no-repeat;
     opacity: 1;
 }
 
-.card__like-icon_liked:hover {
+.card__like-button_liked:hover {
     opacity: 0.5;
 }
 

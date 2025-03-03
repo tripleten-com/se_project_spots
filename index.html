@@ -67,13 +67,10 @@
                         <div class="card cards__card">
                             <img src="" alt="image" class="card__image" />
                             <h2 class="card__description"></h2>
-                            <button class="card__like-button" type="button">
-                                <img
-                                    src="images/like_icon.svg"
-                                    alt="like icon"
-                                    class="card__like-icon"
-                                />
-                            </button>
+                            <button
+                                class="card__like-button"
+                                type="button"
+                            ></button>
                             <button type="button" class="card__delete-button">
                                 <img
                                     src="images/delete-icon.svg"
@@ -92,12 +89,13 @@
                 <p class="footer__text">2023 © Spots</p>
             </footer>
 
-            <!--Modal-->
-            <div class="modal" id="edit-modal">
-                <!--Profile & Add Post-->
-                <div class="modal__container">
+            <!--Modals-->
+
+            <!--Profile Modal-->
+            <div class="modal" id="profile-modal">
+                <div class="modal__container" id="profile-modal">
                     <div class="modal__header">
-                        <h2 class="modal__title"></h2>
+                        <h2 class="modal__title">Edit profile</h2>
                         <button type="button" class="modal__close-button">
                             <img
                                 src="images/close-icon.svg"
@@ -110,24 +108,24 @@
                         <form
                             name="edit-input"
                             class="modal__form"
-                            id="modal-form"
+                            id="edit-profile-form"
                         >
-                            <label for="firstInput" class="modal__label">
-                                <p class="modal__label-title"></p>
+                            <label for="name" class="modal__label">
+                                Name
                                 <input
-                                    id="firstInput"
+                                    id="name"
                                     type="text"
                                     class="modal__input"
-                                    placeholder=""
+                                    placeholder="Type your name"
                                 />
                             </label>
-                            <label for="secondInput" class="modal__label">
-                                <p class="modal__label-title"></p>
+                            <label for="description" class="modal__label">
+                                Description
                                 <input
-                                    id="secondInput"
+                                    id="description"
                                     type="text"
                                     class="modal__input"
-                                    placeholder=""
+                                    placeholder="Describe yourself"
                                 />
                             </label>
                             <button type="submit" class="modal__submit-button">
@@ -136,21 +134,76 @@
                         </form>
                     </div>
                 </div>
-                <!--Profile & Add Post end-->
+            </div>
+            <!--Profile Modal end-->
 
-                <!--Picture Modal-->
-                <div class="show-image">
-                    <img src="" alt="" class="show-image__image" />
-                    <button class="show-image__close-button">
+            <!--Post Modal-->
+            <div class="modal" id="new-post-modal">
+                <div class="modal__container">
+                    <div class="modal__header">
+                        <h2 class="modal__title">New post</h2>
+                        <button type="button" class="modal__close-button">
+                            <img
+                                src="images/close-icon.svg"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content">
+                        <form
+                            name="edit-input"
+                            class="modal__form"
+                            id="new-post-form"
+                        >
+                            <label for="post-link" class="modal__label">
+                                Image link
+                                <input
+                                    id="post-link"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Paste a link to the picture"
+                                />
+                            </label>
+                            <label for="post-caption" class="modal__label">
+                                Caption
+                                <input
+                                    id="post-caption"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Type your caption"
+                                />
+                            </label>
+                            <button
+                                type="submit"
+                                class="modal__submit-button modal__submit-button_disabled"
+                                disabled
+                            >
+                                <p class="modal__submit-button-text">Save</p>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Post Modal end-->
+
+            <!--Picture Modal-->
+            <div class="modal" id="preview-modal">
+                <div class="modal__preview">
+                    <img src="" alt="" class="modal__image" />
+                    <button
+                        type="button"
+                        class="modal__close-button modal__close-button-image"
+                    >
                         <img
                             src="images/close-icon-white.svg"
                             alt="close-button"
-                            class="show-image__close-button-icon"
+                            class="modal__close-button-icon"
                         />
                     </button>
                 </div>
-                <!--Picture Modal-->
             </div>
+            <!--Picture Modal-->
             <!--Modal end-->
         </div>
         <script src="scripts/index.js" defer></script>
