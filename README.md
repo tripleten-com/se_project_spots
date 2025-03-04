@@ -4,7 +4,7 @@
 
 -   Intro
 -   Languages & Techniques
--   Figma
+-   Links
 
 **Intro**
 
@@ -20,7 +20,7 @@ Techniques applied includes:
 -   Smooth transitions
 -   Submitted Forms
 
-**Figma**
+**Links**
 
 -   [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
 
