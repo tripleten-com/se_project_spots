@@ -22,7 +22,7 @@
 @media screen and (max-width: 640px) {
     .cards {
         grid-template-columns: minmax(200px, 1fr);
-        grid-auto-rows: auto;
+        grid-auto-rows: min-content;
         padding-bottom: 20px;
     }
 }
