@@ -35,7 +35,7 @@
     width: 23px;
     height: 20px;
     opacity: 0.4;
-    transition: opacity 0.2s ease-in-out;
+    transition: 0.1s ease-in-out;
     border: 0;
     padding: 0;
     background: none;
