@@ -4,8 +4,8 @@
     aspect-ratio: 1 / 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     position: relative;
+    gap: 12px;
 }
 
 .card__image {
@@ -15,8 +15,14 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 12px;
     cursor: pointer;
+}
+
+.card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
 }
 
 .card__description {
@@ -39,11 +45,10 @@
     transition: 0.1s ease-in-out;
     border: 0;
     padding: 0;
-    background: none;
     display: flex;
     align-self: flex-end;
     cursor: pointer;
-    background: url("../images/like_icon.svg") no-repeat center;
+    background: url("../images/like_icon.svg") center no-repeat;
 }
 
 .card__like-button:hover {
@@ -89,7 +94,6 @@
 @media screen and (max-width: 640px) {
     .card__description {
         font-size: 16px;
-        line-height: 1;
     }
 
     .card__like-icon {
