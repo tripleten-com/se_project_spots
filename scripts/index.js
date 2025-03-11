@@ -82,10 +82,17 @@ function toggleModal(modal) {
 }
 
 function handleOpenModalProfile() {
+    const errorText = editProfileForm.querySelectorAll(".modal__error-text");
     editProfileName.value = profileName.textContent;
     editProfileDesc.value = profileDesc.textContent;
     toggleModal(editProfileModal);
     toggleSubmitButton(editProfileInputs, editProfileSubmitButton);
+    editProfileInputs.forEach((input) => {
+        input.classList.remove("modal__input_error");
+    });
+    errorText.forEach((text) => {
+        text.style = "display: none";
+    });
 }
 
 function handleOpenModalNewPost() {
@@ -106,11 +113,9 @@ function activateSubmitbutton(btn) {
 function toggleSubmitButton(inputFields, submitButton) {
     inputFields.forEach((input) => {
         input.addEventListener("input", function () {
-            const allFilled = [...inputFields].every(
-                (field) => field.value.trim() !== ""
-            );
+            const isValid = input.validity.valid;
 
-            if (allFilled) {
+            if (isValid) {
                 activateSubmitbutton(submitButton);
             } else {
                 deactivateSubmitbutton(submitButton);
@@ -197,3 +202,5 @@ function renderCards(data) {
 renderCards(initialCards);
 
 // Cards functions end
+
+// ---------------------------------------------------------------------
