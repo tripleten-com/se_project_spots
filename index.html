@@ -123,7 +123,9 @@
                                     minlength="2"
                                     maxlength="40"
                                 />
-                                <span class="modal__error-text"></span>
+                                <span
+                                    class="modal__error-text name-error"
+                                ></span>
                             </label>
                             <label for="description" class="modal__label">
                                 Description
@@ -136,7 +138,9 @@
                                     minlength="2"
                                     maxlength="200"
                                 />
-                                <span class="modal__error-text">Error</span>
+                                <span
+                                    class="modal__error-text description-error"
+                                ></span>
                             </label>
                             <button type="submit" class="modal__submit-button">
                                 Save
@@ -175,7 +179,9 @@
                                     placeholder="Paste a link to the picture"
                                     required
                                 />
-                                <span class="modal__error">Error</span>
+                                <span
+                                    class="modal__error-text post-link-error"
+                                ></span>
                             </label>
                             <label for="post-caption" class="modal__label">
                                 Caption
@@ -186,8 +192,11 @@
                                     placeholder="Type your caption"
                                     minlength="2"
                                     maxlength="30"
+                                    required
                                 />
-                                <span class="modal__error">Error</span>
+                                <span
+                                    class="modal__error-text post-caption-error"
+                                ></span>
                             </label>
                             <button
                                 type="submit"

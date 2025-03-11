@@ -82,6 +82,7 @@ function toggleModal(modal) {
 }
 
 function handleOpenModalProfile() {
+    enableEscapeClose();
     const errorText = editProfileForm.querySelectorAll(".modal__error-text");
     editProfileName.value = profileName.textContent;
     editProfileDesc.value = profileDesc.textContent;
@@ -91,11 +92,12 @@ function handleOpenModalProfile() {
         input.classList.remove("modal__input_error");
     });
     errorText.forEach((text) => {
-        text.style = "display: none";
+        text.classList.remove("modal__error-text_active");
     });
 }
 
 function handleOpenModalNewPost() {
+    enableEscapeClose();
     toggleModal(newPostModal);
     toggleSubmitButton(newPostInputs, newPostSubmitButton);
 }
@@ -113,8 +115,9 @@ function activateSubmitbutton(btn) {
 function toggleSubmitButton(inputFields, submitButton) {
     inputFields.forEach((input) => {
         input.addEventListener("input", function () {
-            const isValid = input.validity.valid;
-
+            const isValid = [...inputFields].every(
+                (input) => input.validity.valid
+            );
             if (isValid) {
                 activateSubmitbutton(submitButton);
             } else {
@@ -129,6 +132,7 @@ function handleProfileFormSubmit(evt) {
     profileName.textContent = editProfileName.value;
     profileDesc.textContent = editProfileDesc.value;
     toggleModal(editProfileModal);
+    editProfileForm.reset();
 }
 
 function handleCardFormSubmit(evt) {
@@ -141,9 +145,11 @@ function handleCardFormSubmit(evt) {
     cardsGrid.prepend(cardElement);
     newPostForm.reset();
     toggleModal(newPostModal);
+    deactivateSubmitbutton(newPostSubmitButton);
 }
 
 function handlePreviewModal(evt) {
+    enableEscapeClose();
     modalImage.src = evt.target.src;
     modalImage.alt = evt.target.alt;
     previewCaption.textContent = evt.target.alt;
@@ -159,6 +165,36 @@ profileEditButton.addEventListener("click", handleOpenModalProfile);
 profileNewPost.addEventListener("click", handleOpenModalNewPost);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPostForm.addEventListener("submit", handleCardFormSubmit);
+
+const closeModalOnOverlay = () => {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach((modal) => {
+        modal.addEventListener("click", (evt) => {
+            if (evt.target === modal) {
+                toggleModal(modal);
+                disableEscapeClose();
+            }
+        });
+    });
+};
+
+const escapeKeyFunction = (evt) => {
+    if (evt.key === "Escape") {
+        const openedModal = document.querySelector(".modal_opened");
+        toggleModal(openedModal);
+        disableEscapeClose();
+    }
+};
+
+const enableEscapeClose = () => {
+    document.addEventListener("keydown", escapeKeyFunction);
+};
+
+const disableEscapeClose = () => {
+    document.removeEventListener("keydown", escapeKeyFunction);
+};
+
+closeModalOnOverlay();
 
 // Modal functions end
 // ---------------------------------------------------------------------
