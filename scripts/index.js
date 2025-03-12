@@ -39,6 +39,9 @@ const editProfileCloseButton = editProfileModal.querySelector(
     ".modal__close-button"
 );
 
+import { resetValidation } from "./validation.js";
+import { settings } from "./validation.js";
+
 /// New Post Modal
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
@@ -60,8 +63,8 @@ const profileDesc = profile.querySelector(".profile__desc");
 const cardsGrid = document.querySelector(".cards");
 
 // Form Variables
-const editProfileForm = editProfileModal.querySelector(".modal__form");
-const newPostForm = newPostModal.querySelector(".modal__form");
+const editProfileForm = document.forms["edit-profile-form"];
+const newPostForm = document.forms["new-post-form"];
 const editProfileInputs = editProfileForm.querySelectorAll(".modal__input");
 const newPostInputs = newPostForm.querySelectorAll(".modal__input");
 const editProfileName = editProfileForm.querySelector("#name");
@@ -79,52 +82,21 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 
 function toggleModal(modal) {
     modal.classList.toggle("modal_opened");
+    if (modal.classList.contains("modal_opened")) {
+        enableEscapeClose();
+    } else {
+        disableEscapeClose();
+    }
 }
 
 function handleOpenModalProfile() {
-    enableEscapeClose();
-    const errorText = editProfileForm.querySelectorAll(".modal__error-text");
     editProfileName.value = profileName.textContent;
     editProfileDesc.value = profileDesc.textContent;
     toggleModal(editProfileModal);
-    toggleSubmitButton(editProfileInputs, editProfileSubmitButton);
-    editProfileInputs.forEach((input) => {
-        input.classList.remove("modal__input_error");
-    });
-    errorText.forEach((text) => {
-        text.classList.remove("modal__error-text_active");
-    });
 }
 
 function handleOpenModalNewPost() {
-    enableEscapeClose();
     toggleModal(newPostModal);
-    toggleSubmitButton(newPostInputs, newPostSubmitButton);
-}
-
-function deactivateSubmitbutton(btn) {
-    btn.classList.add("modal__submit-button_disabled");
-    btn.disabled = true;
-}
-
-function activateSubmitbutton(btn) {
-    btn.classList.remove("modal__submit-button_disabled");
-    btn.disabled = false;
-}
-
-function toggleSubmitButton(inputFields, submitButton) {
-    inputFields.forEach((input) => {
-        input.addEventListener("input", function () {
-            const isValid = [...inputFields].every(
-                (input) => input.validity.valid
-            );
-            if (isValid) {
-                activateSubmitbutton(submitButton);
-            } else {
-                deactivateSubmitbutton(submitButton);
-            }
-        });
-    });
 }
 
 function handleProfileFormSubmit(evt) {
@@ -145,11 +117,9 @@ function handleCardFormSubmit(evt) {
     cardsGrid.prepend(cardElement);
     newPostForm.reset();
     toggleModal(newPostModal);
-    deactivateSubmitbutton(newPostSubmitButton);
 }
 
 function handlePreviewModal(evt) {
-    enableEscapeClose();
     modalImage.src = evt.target.src;
     modalImage.alt = evt.target.alt;
     previewCaption.textContent = evt.target.alt;
@@ -172,13 +142,12 @@ const closeModalOnOverlay = () => {
         modal.addEventListener("click", (evt) => {
             if (evt.target === modal) {
                 toggleModal(modal);
-                disableEscapeClose();
             }
         });
     });
 };
 
-const escapeKeyFunction = (evt) => {
+const closeKeyEscape = (evt) => {
     if (evt.key === "Escape") {
         const openedModal = document.querySelector(".modal_opened");
         toggleModal(openedModal);
@@ -187,11 +156,11 @@ const escapeKeyFunction = (evt) => {
 };
 
 const enableEscapeClose = () => {
-    document.addEventListener("keydown", escapeKeyFunction);
+    document.addEventListener("keydown", closeKeyEscape);
 };
 
 const disableEscapeClose = () => {
-    document.removeEventListener("keydown", escapeKeyFunction);
+    document.removeEventListener("keydown", closeKeyEscape);
 };
 
 closeModalOnOverlay();
@@ -200,11 +169,11 @@ closeModalOnOverlay();
 // ---------------------------------------------------------------------
 // Cards functions
 
-function cardLiked(evt) {
+function likeCard(evt) {
     evt.target.classList.toggle("card__like-button_liked");
 }
 
-function cardDelete(evt) {
+function deleteCard(evt) {
     evt.target.closest(".card").remove();
 }
 
@@ -217,10 +186,10 @@ function getCardElement(elem) {
     const cardDesc = cardTemplate.querySelector(".card__description");
     cardTemplate
         .querySelector(".card__like-button")
-        .addEventListener("click", cardLiked);
+        .addEventListener("click", likeCard);
     cardTemplate
         .querySelector(".card__delete-button")
-        .addEventListener("click", cardDelete);
+        .addEventListener("click", deleteCard);
     cardImage.addEventListener("click", handlePreviewModal);
     cardImage.src = elem.link;
     cardImage.alt = elem.name;
