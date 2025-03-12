@@ -39,9 +39,6 @@ const editProfileCloseButton = editProfileModal.querySelector(
     ".modal__close-button"
 );
 
-import { resetValidation } from "./validation.js";
-import { settings } from "./validation.js";
-
 /// New Post Modal
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
@@ -92,6 +89,8 @@ function toggleModal(modal) {
 function handleOpenModalProfile() {
     editProfileName.value = profileName.textContent;
     editProfileDesc.value = profileDesc.textContent;
+    editProfileName.dispatchEvent(new Event("input"));
+    editProfileDesc.dispatchEvent(new Event("input"));
     toggleModal(editProfileModal);
 }
 
