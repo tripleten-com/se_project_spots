@@ -115,6 +115,7 @@ function handleCardFormSubmit(evt) {
     const cardElement = getCardElement(newCard);
     cardsGrid.prepend(cardElement);
     newPostForm.reset();
+    deactivateSubmitbutton(evt.submitter, settings);
     toggleModal(newPostModal);
 }
 
@@ -150,7 +151,6 @@ const closeKeyEscape = (evt) => {
     if (evt.key === "Escape") {
         const openedModal = document.querySelector(".modal_opened");
         toggleModal(openedModal);
-        disableEscapeClose();
     }
 };
 
