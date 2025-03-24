@@ -1,35 +1,8 @@
-const initialCards = [
-    {
-        name: "Golden gate bridge",
-        link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-    },
-    {
-        name: "Val Thorens",
-        link: "images/1-photo-by-moritz-feldmann-from-pexels.jpg",
-    },
-    {
-        name: "Restaurant terrace",
-        link: "images/2-photo-by-ceiline-from-pexels.jpg",
-    },
-    {
-        name: "An outdoor cafe",
-        link: "images/3-photo-by-tubanur-dogan-from-pexels.jpg",
-    },
-    {
-        name: "A very long bridge, over the forest across the bridge",
-        link: "images/4-photo-by-maurice-laschet-from-pexels.jpg",
-    },
-    {
-        name: "Tunnel with morning light",
-        link: "images/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-    },
-    {
-        name: "Mountain house",
-        link: "images/6-photo-by-moritz-feldmann-from-pexels.jpg",
-    },
-];
+import { initialCards, settings } from "../utils/constants.js";
+import FormValidator from "../components/FormValidator.js";
 
 // Modal Variables
+
 /// Edit Profile Modal
 const editProfileModal = document.querySelector("#profile-modal");
 const editProfileSubmitButton = editProfileModal.querySelector(
@@ -73,6 +46,8 @@ const newPostCapt = newPostForm.querySelector("#post-caption");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // ---------------------------------------------------------------------
+const validatorProfile = new FormValidator(settings, editProfileForm);
+const validatorNewPost = new FormValidator(settings, newPostForm);
 // ---------------------------------------------------------------------
 
 // Modal functions
@@ -114,8 +89,7 @@ function handleCardFormSubmit(evt) {
     };
     const cardElement = getCardElement(newCard);
     cardsGrid.prepend(cardElement);
-    newPostForm.reset();
-    deactivateSubmitbutton(evt.submitter, settings);
+    validatorNewPost.resetValidation();
     toggleModal(newPostModal);
 }
 
@@ -204,7 +178,8 @@ function renderCards(data) {
 }
 
 renderCards(initialCards);
-
+validatorProfile.enableValidation();
+validatorNewPost.enableValidation();
 // Cards functions end
 
 // ---------------------------------------------------------------------
