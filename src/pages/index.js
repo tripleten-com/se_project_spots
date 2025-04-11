@@ -1,5 +1,6 @@
 import { initialCards, settings } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
+import "./index.css";
 
 // Modal Variables
 

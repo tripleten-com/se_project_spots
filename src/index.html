@@ -6,7 +6,6 @@
         <meta name="description" content="Spots Photo Library" />
         <meta name="aythor" content="Abraham Efraim" />
         <title>Spots</title>
-        <link rel="stylesheet" href="pages/index.css" />
         <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body class="body">
@@ -14,7 +13,7 @@
             <!--Header-->
             <header class="header">
                 <img
-                    src="images/Logo.svg"
+                    src="<%=require('./images/Logo.svg')%>"
                     alt="Spots logo"
                     class="header__logo"
                 />
@@ -28,7 +27,7 @@
                 <section class="profile">
                     <div class="profile__container">
                         <img
-                            src="images/Avatar.svg"
+                            src="<%=require('./images/Avatar.svg')%>"
                             alt="Avatar"
                             class="profile__avatar"
                         />
@@ -41,7 +40,7 @@
 
                             <button class="profile__edit-button" type="button">
                                 <img
-                                    src="images/edit_logo.svg"
+                                    src="<%=require('./images/edit_logo.svg')%>"
                                     alt="edit logo"
                                     class="profile__edit-button-sign"
                                 />
@@ -51,7 +50,7 @@
                     </div>
                     <button class="profile__new-post" type="button">
                         <img
-                            src="images/new_post_+.svg"
+                            src="<%=require('./images/new_post_+.svg')%>"
                             alt="new post sign"
                             class="profile__new-post-sign"
                         />
@@ -75,7 +74,7 @@
                             </div>
                             <button type="button" class="card__delete-button">
                                 <img
-                                    src="images/delete-icon.svg"
+                                    src="<%=require('./images/delete-icon.svg')%>"
                                     alt="delete icon"
                                     class="card__delete-icon"
                                 />
@@ -100,7 +99,7 @@
                         <h2 class="modal__title">Edit profile</h2>
                         <button type="button" class="modal__close-button">
                             <img
-                                src="images/close-icon.svg"
+                                src="<%=require('./images/close-icon.svg')%>"
                                 alt="close-button"
                                 class="modal__close-button-icon"
                             />
@@ -158,7 +157,7 @@
                         <h2 class="modal__title">New post</h2>
                         <button type="button" class="modal__close-button">
                             <img
-                                src="images/close-icon.svg"
+                                src="<%=require('./images/close-icon.svg')%>"
                                 alt="close-button"
                                 class="modal__close-button-icon"
                             />
@@ -215,7 +214,7 @@
             <div class="modal" id="preview-modal">
                 <div class="modal__preview">
                     <img
-                        src="images/avatar.jpg"
+                        src="<%=require('./images/avatar.jpg')%>"
                         alt="blank"
                         class="modal__image"
                     />
@@ -224,7 +223,7 @@
                         class="modal__close-button modal__close-button-image"
                     >
                         <img
-                            src="images/close-icon-white.svg"
+                            src="<%=require('./images/close-icon-white.svg')%>"
                             alt="close-button"
                             class="modal__close-button-icon"
                         />
@@ -237,7 +236,5 @@
             <!--Picture Modal-->
             <!--Modal end-->
         </div>
-
-        <script src="scripts/index.js" type="module"></script>
     </body>
 </html>
