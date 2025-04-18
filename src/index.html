@@ -302,6 +302,51 @@
             </div>
             <!--Delete Modal end-->
 
+            <!--Avatar Modal-->
+            <div class="modal" id="avatar-modal">
+                <div class="modal__container">
+                    <div class="modal__header">
+                        <h2 class="modal__title">Edit profile avatar</h2>
+                        <button type="button" class="modal__close-button">
+                            <img
+                                src="<%=require('./images/close-icon.svg')%>"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content">
+                        <form
+                            name="edit-input"
+                            class="modal__form"
+                            id="avatar-form"
+                        >
+                            <label for="avatar-link" class="modal__label">
+                                Profile Picture
+                                <input
+                                    id="avatar-link"
+                                    type="url"
+                                    class="modal__input"
+                                    placeholder="Paste a link to an image"
+                                    required
+                                />
+                                <span
+                                    class="modal__error-text avatar-link-error"
+                                ></span>
+                            </label>
+                            <button
+                                type="submit"
+                                class="modal__submit-button modal__submit-button_disabled"
+                                disabled
+                            >
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Avatar Modal end-->
+
             <!--Modal end-->
         </div>
     </body>

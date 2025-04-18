@@ -7,31 +7,20 @@ import Api from "../utils/Api.js";
 
 /// Edit Profile Modal
 const editProfileModal = document.querySelector("#profile-modal");
-const editProfileSubmitButton = editProfileModal.querySelector(
-    ".modal__submit-button"
-);
-const editProfileCloseButton = editProfileModal.querySelector(
-    ".modal__close-button"
-);
 
 /// New Post Modal
 const newPostModal = document.querySelector("#new-post-modal");
-const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
 
 /// Preview Modal
 const previewModal = document.querySelector("#preview-modal");
-const previewCloseButton = previewModal.querySelector(".modal__close-button");
 const previewCaption = previewModal.querySelector(".modal__image-caption");
 const modalImage = previewModal.querySelector(".modal__image");
 
 /// Delete Post Modal
 const deletePostModal = document.querySelector("#delete-post-modal");
-const deletePostSubmitButton = deletePostModal.querySelector(
-    ".modal__submit-button"
-);
-const deletePostCloseButton = deletePostModal.querySelector(
-    ".modal__close-button"
-);
+
+// Avatar Modal
+const avatarModal = document.querySelector("#avatar-modal");
 
 // Profile Variables
 const profile = document.querySelector(".profile");
@@ -40,6 +29,7 @@ const profileNewPost = profile.querySelector(".profile__new-post");
 const profileName = profile.querySelector(".profile__name");
 const profileDesc = profile.querySelector(".profile__desc");
 const profileAvatar = profile.querySelector(".profile__avatar");
+const profileAvatarOverlay = profile.querySelector(".profile__avatar-overlay");
 
 // Cards Variables
 const cardsGrid = document.querySelector(".cards");
@@ -47,12 +37,12 @@ const cardsGrid = document.querySelector(".cards");
 // Form Variables
 const editProfileForm = document.forms["edit-profile-form"];
 const newPostForm = document.forms["new-post-form"];
-const editProfileInputs = editProfileForm.querySelectorAll(".modal__input");
-const newPostInputs = newPostForm.querySelectorAll(".modal__input");
+const avatarForm = document.forms["avatar-form"];
 const editProfileName = editProfileForm.querySelector("#name");
 const editProfileDesc = editProfileForm.querySelector("#description");
 const newPostLink = newPostForm.querySelector("#post-link");
 const newPostCapt = newPostForm.querySelector("#post-caption");
+const avatarLink = avatarForm.querySelector("#avatar-link");
 
 // Close buttons
 const closeButtons = document.querySelectorAll(".modal__close-button");
@@ -60,6 +50,7 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 // ---------------------------------------------------------------------
 const validatorProfile = new FormValidator(settings, editProfileForm);
 const validatorNewPost = new FormValidator(settings, newPostForm);
+const validatorAvatar = new FormValidator(settings, avatarForm);
 // ---------------------------------------------------------------------
 
 // API
@@ -92,6 +83,10 @@ function handleOpenModalProfile() {
 
 function handleOpenModalNewPost() {
     toggleModal(newPostModal);
+}
+
+function handleOpenModalAvatar() {
+    toggleModal(avatarModal);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -147,6 +142,7 @@ closeButtons.forEach((button) => {
 
 profileEditButton.addEventListener("click", handleOpenModalProfile);
 profileNewPost.addEventListener("click", handleOpenModalNewPost);
+profileAvatarOverlay.addEventListener("click", handleOpenModalAvatar);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPostForm.addEventListener("submit", handleCardFormSubmit);
 
@@ -229,8 +225,11 @@ api.loadInitialContent()
         console.error(err);
     });
 
-validatorProfile.enableValidation();
-validatorNewPost.enableValidation();
 // Cards functions end
 
+// Validators
+
+validatorProfile.enableValidation();
+validatorNewPost.enableValidation();
+validatorAvatar.enableValidation();
 // ---------------------------------------------------------------------

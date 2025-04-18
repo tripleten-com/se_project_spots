@@ -101,7 +101,7 @@
     position: absolute;
     bottom: 12px;
     pointer-events: none;
-    z-index: 2;
+
     opacity: 0;
     color: white;
     transition: opacity 0.15s ease-in-out;
