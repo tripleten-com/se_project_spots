@@ -1,6 +1,7 @@
-import { initialCards, settings } from "../utils/constants.js";
+import { settings } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
+import Api from "../utils/Api.js";
 
 // Modal Variables
 
@@ -23,12 +24,22 @@ const previewCloseButton = previewModal.querySelector(".modal__close-button");
 const previewCaption = previewModal.querySelector(".modal__image-caption");
 const modalImage = previewModal.querySelector(".modal__image");
 
+/// Delete Post Modal
+const deletePostModal = document.querySelector("#delete-post-modal");
+const deletePostSubmitButton = deletePostModal.querySelector(
+    ".modal__submit-button"
+);
+const deletePostCloseButton = deletePostModal.querySelector(
+    ".modal__close-button"
+);
+
 // Profile Variables
 const profile = document.querySelector(".profile");
-const profileEditButton = profile.querySelector(".profile__edit-button");
+const profileEditButton = profile.querySelector("#edit-profile");
 const profileNewPost = profile.querySelector(".profile__new-post");
 const profileName = profile.querySelector(".profile__name");
 const profileDesc = profile.querySelector(".profile__desc");
+const profileAvatar = profile.querySelector(".profile__avatar");
 
 // Cards Variables
 const cardsGrid = document.querySelector(".cards");
@@ -50,6 +61,15 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 const validatorProfile = new FormValidator(settings, editProfileForm);
 const validatorNewPost = new FormValidator(settings, newPostForm);
 // ---------------------------------------------------------------------
+
+// API
+const api = new Api({
+    url: "https://around-api.en.tripleten-services.com/v1",
+    headers: {
+        authorization: "13430c32-a8ca-4f0e-9fc3-4da36101b73c",
+        "Content-Type": "application/json",
+    },
+});
 
 // Modal functions
 
@@ -78,6 +98,19 @@ function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = editProfileName.value;
     profileDesc.textContent = editProfileDesc.value;
+
+    api.editUserInfo({
+        name: profileName.textContent,
+        about: profileDesc.textContent,
+    })
+        .then((res) => {
+            res.name = editProfileName.value;
+            res.about = editProfileDesc.value;
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+
     toggleModal(editProfileModal);
     editProfileForm.reset();
 }
@@ -88,10 +121,16 @@ function handleCardFormSubmit(evt) {
         link: newPostLink.value,
         name: newPostCapt.value,
     };
-    const cardElement = getCardElement(newCard);
-    cardsGrid.prepend(cardElement);
-    validatorNewPost.resetValidation();
-    toggleModal(newPostModal);
+    api.addNewCard(newCard)
+        .then((res) => {
+            const cardElement = getCardElement(res);
+            cardsGrid.prepend(cardElement);
+            validatorNewPost.resetValidation();
+            toggleModal(newPostModal);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 }
 
 function handlePreviewModal(evt) {
@@ -148,7 +187,8 @@ function likeCard(evt) {
 }
 
 function deleteCard(evt) {
-    evt.target.closest(".card").remove();
+    toggleModal(deletePostModal);
+    // evt.target.closest(".card").remove();
 }
 
 function getCardElement(elem) {
@@ -178,7 +218,17 @@ function renderCards(data) {
     });
 }
 
-renderCards(initialCards);
+api.loadInitialContent()
+    .then(({ cards, userData }) => {
+        renderCards(cards);
+        profileName.textContent = userData.name;
+        profileDesc.textContent = userData.about;
+        profileAvatar.src = userData.avatar;
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+
 validatorProfile.enableValidation();
 validatorNewPost.enableValidation();
 // Cards functions end

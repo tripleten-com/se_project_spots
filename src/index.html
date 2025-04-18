@@ -26,11 +26,38 @@
 
                 <section class="profile">
                     <div class="profile__container">
-                        <img
-                            src="<%=require('./images/Avatar.svg')%>"
-                            alt="Avatar"
-                            class="profile__avatar"
-                        />
+                        <div class="profile__avatar-container">
+                            <div class="profile__avatar-overlay">
+                                <img
+                                    src="<%=require('./images/Avatar.svg')%>"
+                                    alt="Avatar"
+                                    class="profile__avatar"
+                                />
+                            </div>
+                            <button
+                                class="profile__edit-button profile__edit-button_avatar"
+                                type="button"
+                                id="edit-avatar-button"
+                            >
+                                <img
+                                    src="<%=require('./images/edit_logo_white.svg')%>"
+                                    alt="edit logo"
+                                    class="profile__edit-button-sign"
+                                />
+                                Edit Avatar
+                            </button>
+                            <button
+                                class="profile__edit-button profile__edit-button_avatar profile__edit-button_avatar_small"
+                                type="button"
+                                id="edit-avatar-button-small"
+                            >
+                                <img
+                                    src="<%=require('./images/edit_logo_white.svg')%>"
+                                    alt="edit logo"
+                                    class="profile__edit-button-sign"
+                                />
+                            </button>
+                        </div>
 
                         <div class="profile__content">
                             <div class="profile__text">
@@ -38,7 +65,11 @@
                                 <p class="profile__desc">Civil Aviator</p>
                             </div>
 
-                            <button class="profile__edit-button" type="button">
+                            <button
+                                class="profile__edit-button"
+                                type="button"
+                                id="edit-profile"
+                            >
                                 <img
                                     src="<%=require('./images/edit_logo.svg')%>"
                                     alt="edit logo"
@@ -234,6 +265,43 @@
                 </div>
             </div>
             <!--Picture Modal-->
+
+            <!--Delete Modal-->
+            <div class="modal" id="delete-post-modal">
+                <div class="modal__container">
+                    <div class="modal__header modal__header_delete">
+                        <h2 class="modal__title modal__title_delete">
+                            Are you sure you want to delete this image?
+                        </h2>
+                        <button
+                            type="button"
+                            class="modal__close-button modal__close-button-image modal__close-button-delete"
+                        >
+                            <img
+                                src="<%=require('./images/close-icon-white.svg')%>"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content modal__content_delete">
+                        <button
+                            type="button"
+                            class="modal__submit-button modal__submit-button_delete"
+                        >
+                            Delete
+                        </button>
+                        <button
+                            type="button"
+                            class="modal__submit-button modal__submit-button_cancel"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--Delete Modal end-->
+
             <!--Modal end-->
         </div>
     </body>
