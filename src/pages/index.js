@@ -110,6 +110,17 @@ function handleProfileFormSubmit(evt) {
     editProfileForm.reset();
 }
 
+function handleAvatarFormSubmit(evt) {
+    evt.preventDefault();
+    api.editAvatar({ avatar: avatarLink.value })
+        .then((res) => {
+            profileAvatar.src = res.avatar;
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
+
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const newCard = {
@@ -145,6 +156,7 @@ profileNewPost.addEventListener("click", handleOpenModalNewPost);
 profileAvatarOverlay.addEventListener("click", handleOpenModalAvatar);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPostForm.addEventListener("submit", handleCardFormSubmit);
+avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 
 const closeModalOnOverlay = () => {
     const modals = document.querySelectorAll(".modal");
