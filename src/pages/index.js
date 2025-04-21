@@ -95,27 +95,32 @@ function handleOpenModalAvatar() {
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    profileName.textContent = editProfileName.value;
-    profileDesc.textContent = editProfileDesc.value;
+    loading(true, editProfileForm.querySelector(".modal__submit-button"));
 
     api.editUserInfo({
-        name: profileName.textContent,
-        about: profileDesc.textContent,
+        name: editProfileName.value,
+        about: editProfileDesc.value,
     })
         .then((res) => {
-            res.name = editProfileName.value;
-            res.about = editProfileDesc.value;
+            profileName.textContent = res.name;
+            profileDesc.textContent = res.about;
         })
         .catch((err) => {
             console.error(err);
+        })
+        .finally(() => {
+            loading(
+                false,
+                editProfileForm.querySelector(".modal__submit-button")
+            );
         });
 
     toggleModal(editProfileModal);
-    editProfileForm.reset();
 }
 
 function handleAvatarFormSubmit(evt) {
     evt.preventDefault();
+    loading(true, avatarForm.querySelector(".modal__submit-button"));
     api.editAvatar({ avatar: avatarLink.value })
         .then((res) => {
             profileAvatar.src = res.avatar;
@@ -125,11 +130,15 @@ function handleAvatarFormSubmit(evt) {
         })
         .catch((err) => {
             console.error(err);
+        })
+        .finally(() => {
+            loading(false, avatarForm.querySelector(".modal__submit-button"));
         });
 }
 
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
+    loading(true, newPostForm.querySelector(".modal__submit-button"));
     const newCard = {
         link: newPostLink.value,
         name: newPostCapt.value,
@@ -143,6 +152,9 @@ function handleCardFormSubmit(evt) {
         })
         .catch((err) => {
             console.error(err);
+        })
+        .finally(() => {
+            loading(false, newPostForm.querySelector(".modal__submit-button"));
         });
 }
 
@@ -197,6 +209,24 @@ const disableEscapeClose = () => {
 
 closeModalOnOverlay();
 
+// Loading functions
+
+function loading(isLoading, button) {
+    if (isLoading) {
+        button.textContent = "Saving...";
+    } else {
+        button.textContent = "Save";
+    }
+}
+
+function loadingDelete(isLoading, button) {
+    if (isLoading) {
+        button.textContent = "Deleting...";
+    } else {
+        button.textContent = "Delete";
+    }
+}
+
 // Modal functions end
 // ---------------------------------------------------------------------
 // Cards functions
@@ -205,15 +235,22 @@ function likeCard(evt) {
     api.toggleLike({
         isLiked: evt.target.classList.contains("card__like-button_liked"),
         cardId: evt.target.closest(".card").id,
-    }).then((res) => {
-        evt.target.classList.toggle("card__like-button_liked");
-    });
+    })
+        .then(() => {
+            evt.target.classList.toggle("card__like-button_liked");
+        })
+        .catch((err) => {
+            console.error(err);
+            loadingDelete(
+                false,
+                evt.target
+                    .closest(".card")
+                    .querySelector(".modal__submit-button")
+            );
+        });
 }
 
-deletePostForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    handledeletePost();
-});
+deletePostForm.addEventListener("submit", handledeletePost);
 
 let selectedCard;
 
@@ -222,7 +259,9 @@ function deletePost(evt) {
     toggleModal(deletePostModal);
 }
 
-function handledeletePost() {
+function handledeletePost(evt) {
+    evt.preventDefault();
+    loadingDelete(true, deletePostForm.querySelector(".modal__submit-button"));
     api.removeCard({ cardId: selectedCard.id })
         .then(() => {
             selectedCard.remove();
@@ -230,6 +269,12 @@ function handledeletePost() {
         })
         .catch((err) => {
             console.error(err);
+        })
+        .finally(() => {
+            loadingDelete(
+                false,
+                deletePostForm.querySelector(".modal__submit-button")
+            );
         });
 }
 

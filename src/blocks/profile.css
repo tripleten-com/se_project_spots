@@ -35,7 +35,7 @@
 .profile__avatar {
     border-radius: 8px;
     z-index: 2;
-    max-width: 100%;
+    max-width: 250px;
     aspect-ratio: 1 / 1;
 }
 
