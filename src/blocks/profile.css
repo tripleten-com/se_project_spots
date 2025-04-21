@@ -35,6 +35,8 @@
 .profile__avatar {
     border-radius: 8px;
     z-index: 2;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .profile__content {
