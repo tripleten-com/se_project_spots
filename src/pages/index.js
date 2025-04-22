@@ -7,9 +7,13 @@ import Api from "../utils/Api.js";
 
 /// Edit Profile Modal
 const editProfileModal = document.querySelector("#profile-modal");
+const editProfileSubmitButton = editProfileModal.querySelector(
+    ".modal__submit-button"
+);
 
 /// New Post Modal
 const newPostModal = document.querySelector("#new-post-modal");
+const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
 
 /// Preview Modal
 const previewModal = document.querySelector("#preview-modal");
@@ -18,12 +22,16 @@ const modalImage = previewModal.querySelector(".modal__image");
 
 /// Delete Post Modal
 const deletePostModal = document.querySelector("#delete-post-modal");
+const deletePostSubmitButton = deletePostModal.querySelector(
+    ".modal__submit-button"
+);
 const deletePostCancelButton = deletePostModal.querySelector(
     ".modal__submit-button_cancel"
 );
 
 // Avatar Modal
 const avatarModal = document.querySelector("#avatar-modal");
+const avatarSubmitButton = avatarModal.querySelector(".modal__submit-button");
 
 // Profile Variables
 const profile = document.querySelector(".profile");
@@ -41,10 +49,13 @@ const cardsGrid = document.querySelector(".cards");
 const editProfileForm = document.forms["edit-profile-form"];
 const newPostForm = document.forms["new-post-form"];
 const avatarForm = document.forms["avatar-form"];
+//--------------------------------------------------------
 const editProfileName = editProfileForm.querySelector("#name");
 const editProfileDesc = editProfileForm.querySelector("#description");
+//--------------------------------------------------------
 const newPostLink = newPostForm.querySelector("#post-link");
 const newPostCapt = newPostForm.querySelector("#post-caption");
+//--------------------------------------------------------
 const avatarLink = avatarForm.querySelector("#avatar-link");
 const deletePostForm = document.forms["delete-post-form"];
 
@@ -52,6 +63,7 @@ const deletePostForm = document.forms["delete-post-form"];
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // ---------------------------------------------------------------------
+
 const validatorProfile = new FormValidator(settings, editProfileForm);
 const validatorNewPost = new FormValidator(settings, newPostForm);
 const validatorAvatar = new FormValidator(settings, avatarForm);
@@ -95,7 +107,7 @@ function handleOpenModalAvatar() {
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    loading(true, editProfileForm.querySelector(".modal__submit-button"));
+    loading(true, editProfileSubmitButton);
 
     api.editUserInfo({
         name: editProfileName.value,
@@ -104,41 +116,38 @@ function handleProfileFormSubmit(evt) {
         .then((res) => {
             profileName.textContent = res.name;
             profileDesc.textContent = res.about;
+            toggleModal(editProfileModal);
         })
         .catch((err) => {
             console.error(err);
         })
         .finally(() => {
-            loading(
-                false,
-                editProfileForm.querySelector(".modal__submit-button")
-            );
+            loading(false, editProfileSubmitButton);
         });
-
-    toggleModal(editProfileModal);
 }
 
 function handleAvatarFormSubmit(evt) {
     evt.preventDefault();
-    loading(true, avatarForm.querySelector(".modal__submit-button"));
+    loading(true, avatarSubmitButton);
     api.editAvatar({ avatar: avatarLink.value })
         .then((res) => {
             profileAvatar.src = res.avatar;
             profileAvatar.alt = res.name;
             avatarForm.reset();
+            validatorAvatar.resetValidation();
             toggleModal(avatarModal);
         })
         .catch((err) => {
             console.error(err);
         })
         .finally(() => {
-            loading(false, avatarForm.querySelector(".modal__submit-button"));
+            loading(false, avatarSubmitButton);
         });
 }
 
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    loading(true, newPostForm.querySelector(".modal__submit-button"));
+    loading(true, newPostSubmitButton);
     const newCard = {
         link: newPostLink.value,
         name: newPostCapt.value,
@@ -154,7 +163,7 @@ function handleCardFormSubmit(evt) {
             console.error(err);
         })
         .finally(() => {
-            loading(false, newPostForm.querySelector(".modal__submit-button"));
+            loading(false, newPostSubmitButton);
         });
 }
 
@@ -241,12 +250,6 @@ function likeCard(evt) {
         })
         .catch((err) => {
             console.error(err);
-            loadingDelete(
-                false,
-                evt.target
-                    .closest(".card")
-                    .querySelector(".modal__submit-button")
-            );
         });
 }
 
@@ -261,7 +264,7 @@ function deletePost(evt) {
 
 function handledeletePost(evt) {
     evt.preventDefault();
-    loadingDelete(true, deletePostForm.querySelector(".modal__submit-button"));
+    loadingDelete(true, deletePostSubmitButton);
     api.removeCard({ cardId: selectedCard.id })
         .then(() => {
             selectedCard.remove();
@@ -271,10 +274,7 @@ function handledeletePost(evt) {
             console.error(err);
         })
         .finally(() => {
-            loadingDelete(
-                false,
-                deletePostForm.querySelector(".modal__submit-button")
-            );
+            loadingDelete(false, deletePostSubmitButton);
         });
 }
 
@@ -328,3 +328,4 @@ validatorProfile.enableValidation();
 validatorNewPost.enableValidation();
 validatorAvatar.enableValidation();
 // ---------------------------------------------------------------------
+console.log(document.forms);
