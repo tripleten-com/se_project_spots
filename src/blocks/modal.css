@@ -34,6 +34,10 @@
     align-items: center;
 }
 
+.modal__header_delete {
+    justify-content: center;
+}
+
 .modal__title {
     margin: 0;
     font-family: "Poppins", sans-serif, Arial, Helvetica;
@@ -41,6 +45,11 @@
     font-size: 32px;
     line-height: 1;
     letter-spacing: 0%;
+}
+
+.modal__title_delete {
+    font-size: 24px;
+    text-align: center;
 }
 
 .modal__close-button {
@@ -70,10 +79,20 @@
     padding-top: 32px;
 }
 
+.modal__content_delete {
+    display: flex;
+    justify-content: center;
+}
+
 .modal__form {
     display: flex;
     flex-direction: column;
     gap: 32px;
+}
+
+.modal__form_delete {
+    display: flex;
+    gap: 20px;
 }
 
 .modal__label {
@@ -150,6 +169,19 @@
     transition: opacity 0.2s ease-in-out;
 }
 
+.modal__submit-button_delete {
+    background: #ff6565;
+    color: #212121;
+    border: 1px solid transparent;
+}
+
+.modal__submit-button_cancel {
+    background: #fff;
+    color: #212121;
+    box-sizing: border-box;
+    border: 1px solid #212121;
+}
+
 .modal__submit-button:hover {
     opacity: 0.8;
 }
@@ -198,6 +230,11 @@
     right: -32.5px;
     width: 40px;
     height: 40px;
+}
+
+.modal__close-button-delete {
+    right: -46px;
+    top: -4px;
 }
 
 .modal__close-button-image:hover {
@@ -266,6 +303,22 @@
 
     .modal__image {
         width: 100%;
+    }
+
+    .modal__content_delete {
+        flex-direction: column;
+        padding-top: 20px;
+        align-self: center;
+    }
+
+    .modal__close-button-delete {
+        right: 0;
+        top: -45px;
+    }
+
+    .modal__form_delete {
+        flex-direction: column;
+        gap: 12px;
     }
 }
 

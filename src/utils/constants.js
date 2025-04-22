@@ -5,27 +5,27 @@ const initialCards = [
     },
     {
         name: "Val Thorens",
-        link: "images/1-photo-by-moritz-feldmann-from-pexels.jpg",
+        link: "https://github.com/reondaze-a/se_project_spots/blob/main/images/1-photo-by-moritz-feldmann-from-pexels.jpg?raw=true",
     },
     {
         name: "Restaurant terrace",
-        link: "images/2-photo-by-ceiline-from-pexels.jpg",
+        link: "https://github.com/reondaze-a/se_project_spots/blob/main/images/2-photo-by-ceiline-from-pexels.jpg?raw=true",
     },
     {
         name: "An outdoor cafe",
-        link: "images/3-photo-by-tubanur-dogan-from-pexels.jpg",
+        link: "https://github.com/reondaze-a/se_project_spots/blob/main/images/3-photo-by-tubanur-dogan-from-pexels.jpg?raw=true",
     },
     {
         name: "A very long bridge, over the forest across the bridge",
-        link: "images/4-photo-by-maurice-laschet-from-pexels.jpg",
+        link: "https://github.com/reondaze-a/se_project_spots/blob/main/images/4-photo-by-maurice-laschet-from-pexels.jpg?raw=true>",
     },
     {
         name: "Tunnel with morning light",
-        link: "images/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+        link: "https://github.com/reondaze-a/se_project_spots/blob/main/images/5-photo-by-van-anh-nguyen-from-pexels.jpg?raw=true",
     },
     {
         name: "Mountain house",
-        link: "images/6-photo-by-moritz-feldmann-from-pexels.jpg",
+        link: "https://github.com/reondaze-a/se_project_spots/blob/main/images/6-photo-by-moritz-feldmann-from-pexels.jpg?raw=true",
     },
 ];
 
