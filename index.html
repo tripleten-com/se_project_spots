@@ -6,6 +6,7 @@
         <meta name="description" content="Spots Photo Library" />
         <meta name="aythor" content="Abraham Efraim" />
         <title>Spots</title>
+        <link rel="stylesheet" href="pages/index.css" />
         <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body class="body">
@@ -13,7 +14,7 @@
             <!--Header-->
             <header class="header">
                 <img
-                    src="<%=require('./images/Logo.svg')%>"
+                    src="images/Logo.svg"
                     alt="Spots logo"
                     class="header__logo"
                 />
@@ -26,38 +27,11 @@
 
                 <section class="profile">
                     <div class="profile__container">
-                        <div class="profile__avatar-container">
-                            <div class="profile__avatar-overlay">
-                                <img
-                                    src="<%=require('./images/Avatar.svg')%>"
-                                    alt="Avatar"
-                                    class="profile__avatar"
-                                />
-                            </div>
-                            <button
-                                class="profile__edit-button profile__edit-button_avatar"
-                                type="button"
-                                id="edit-avatar-button"
-                            >
-                                <img
-                                    src="<%=require('./images/edit_logo_white.svg')%>"
-                                    alt="edit logo"
-                                    class="profile__edit-button-sign"
-                                />
-                                Edit Avatar
-                            </button>
-                            <button
-                                class="profile__edit-button profile__edit-button_avatar profile__edit-button_avatar_small"
-                                type="button"
-                                id="edit-avatar-button-small"
-                            >
-                                <img
-                                    src="<%=require('./images/edit_logo_white.svg')%>"
-                                    alt="edit logo"
-                                    class="profile__edit-button-sign"
-                                />
-                            </button>
-                        </div>
+                        <img
+                            src="images/Avatar.svg"
+                            alt="Avatar"
+                            class="profile__avatar"
+                        />
 
                         <div class="profile__content">
                             <div class="profile__text">
@@ -65,13 +39,9 @@
                                 <p class="profile__desc">Civil Aviator</p>
                             </div>
 
-                            <button
-                                class="profile__edit-button"
-                                type="button"
-                                id="edit-profile"
-                            >
+                            <button class="profile__edit-button" type="button">
                                 <img
-                                    src="<%=require('./images/edit_logo.svg')%>"
+                                    src="images/edit_logo.svg"
                                     alt="edit logo"
                                     class="profile__edit-button-sign"
                                 />
@@ -81,7 +51,7 @@
                     </div>
                     <button class="profile__new-post" type="button">
                         <img
-                            src="<%=require('./images/new_post_+.svg')%>"
+                            src="images/new_post_+.svg"
                             alt="new post sign"
                             class="profile__new-post-sign"
                         />
@@ -105,7 +75,7 @@
                             </div>
                             <button type="button" class="card__delete-button">
                                 <img
-                                    src="<%=require('./images/delete-icon.svg')%>"
+                                    src="images/delete-icon.svg"
                                     alt="delete icon"
                                     class="card__delete-icon"
                                 />
@@ -130,7 +100,7 @@
                         <h2 class="modal__title">Edit profile</h2>
                         <button type="button" class="modal__close-button">
                             <img
-                                src="<%=require('./images/close-icon.svg')%>"
+                                src="images/close-icon.svg"
                                 alt="close-button"
                                 class="modal__close-button-icon"
                             />
@@ -188,7 +158,7 @@
                         <h2 class="modal__title">New post</h2>
                         <button type="button" class="modal__close-button">
                             <img
-                                src="<%=require('./images/close-icon.svg')%>"
+                                src="images/close-icon.svg"
                                 alt="close-button"
                                 class="modal__close-button-icon"
                             />
@@ -245,7 +215,7 @@
             <div class="modal" id="preview-modal">
                 <div class="modal__preview">
                     <img
-                        src="<%=require('./images/avatar.jpg')%>"
+                        src="images/avatar.jpg"
                         alt="blank"
                         class="modal__image"
                     />
@@ -254,7 +224,7 @@
                         class="modal__close-button modal__close-button-image"
                     >
                         <img
-                            src="<%=require('./images/close-icon-white.svg')%>"
+                            src="images/close-icon-white.svg"
                             alt="close-button"
                             class="modal__close-button-icon"
                         />
@@ -265,95 +235,9 @@
                 </div>
             </div>
             <!--Picture Modal-->
-
-            <!--Delete Modal-->
-            <div class="modal" id="delete-post-modal">
-                <div class="modal__container">
-                    <div class="modal__header modal__header_delete">
-                        <h2 class="modal__title modal__title_delete">
-                            Are you sure you want to delete this image?
-                        </h2>
-                        <button
-                            type="button"
-                            class="modal__close-button modal__close-button-image modal__close-button-delete"
-                        >
-                            <img
-                                src="<%=require('./images/close-icon-white.svg')%>"
-                                alt="close-button"
-                                class="modal__close-button-icon"
-                            />
-                        </button>
-                    </div>
-                    <div class="modal__content modal__content_delete">
-                        <form
-                            id="delete-post-form"
-                            name="delete-post-form"
-                            class="modal__form_delete"
-                        >
-                            <button
-                                type="submit"
-                                class="modal__submit-button modal__submit-button_delete"
-                            >
-                                Delete
-                            </button>
-                            <button
-                                type="button"
-                                class="modal__submit-button modal__submit-button_cancel"
-                            >
-                                Cancel
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--Delete Modal end-->
-
-            <!--Avatar Modal-->
-            <div class="modal" id="avatar-modal">
-                <div class="modal__container">
-                    <div class="modal__header">
-                        <h2 class="modal__title">Edit profile avatar</h2>
-                        <button type="button" class="modal__close-button">
-                            <img
-                                src="<%=require('./images/close-icon.svg')%>"
-                                alt="close-button"
-                                class="modal__close-button-icon"
-                            />
-                        </button>
-                    </div>
-                    <div class="modal__content">
-                        <form
-                            name="edit-input"
-                            class="modal__form"
-                            id="avatar-form"
-                        >
-                            <label for="avatar-link" class="modal__label">
-                                Profile Picture
-                                <input
-                                    id="avatar-link"
-                                    type="url"
-                                    class="modal__input"
-                                    placeholder="Paste a link to an image"
-                                    required
-                                />
-                                <span
-                                    class="modal__error-text avatar-link-error"
-                                ></span>
-                            </label>
-                            <button
-                                type="submit"
-                                class="modal__submit-button modal__submit-button_disabled"
-                                disabled
-                            >
-                                Save
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--Avatar Modal end-->
-
             <!--Modal end-->
         </div>
+
+        <script src="scripts/index.js" type="module"></script>
     </body>
 </html>

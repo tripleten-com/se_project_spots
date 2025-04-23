@@ -8,7 +8,7 @@
 
 ## **Intro**
 
-This project is a social media app layout called Spots. The main goal of this project is applying a responsive design to the webpage with HTML & CSS, as well having functional buttons and forms with their intended use through the application of functions from Javascript. The project also has basic applications of APIs, interacting with the server-side of things to retain information on the app!
+This project is a social media app layout called Spots. The main goal of this project is applying a responsive design to the webpage with HTML & CSS, as well having functional buttons and forms with their intended use through the application of functions from Javascript.
 
 ## **Languages & Techniques**
 
@@ -17,11 +17,10 @@ This project is done with HTML, CSS, JavaScript as well as a collaboration throu
 Techniques applied includes:
 
 -   Responsive Design
--   Smooth Transitions
+-   Smooth transitions
 -   Submitted Forms
 -   Form Validations
 -   UX Improvements
--   API Applications
 
 ## **Links**
 
