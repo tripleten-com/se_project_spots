@@ -12,7 +12,7 @@ This project is a social media app layout called Spots. The main goal of this pr
 
 ## **Languages & Techniques**
 
-This project is done with HTML, CSS, JavaScript as well as a collaboration through Figma. The project also utilizes NPM for packages and being used are PostCSS, Webpack, and Babel.
+This project is done with HTML, CSS, JavaScript as well as a collaboration through Figma. The project also utilizes a Package Manager () and the libraries being used are PostCSS, Webpack, and Babel.
 
 Techniques applied includes:
 
