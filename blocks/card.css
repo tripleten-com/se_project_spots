@@ -1,0 +1,103 @@
+.card {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 12px;
+}
+
+.card__image {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.card__description {
+    max-width: 90%;
+    margin: 0;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #212121;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card__like-button {
+    width: 23px;
+    height: 20px;
+    opacity: 0.4;
+    transition: 0.1s ease-in-out;
+    border: 0;
+    padding: 0;
+    display: flex;
+    align-self: flex-end;
+    cursor: pointer;
+    background: url("../images/like_icon.svg") center no-repeat;
+}
+
+.card__like-button:hover {
+    opacity: 1;
+}
+
+.card__like-button_liked {
+    background: url("../images/liked.svg") no-repeat center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+
+.card__like-button_liked:hover {
+    opacity: 0.5;
+}
+
+.card__delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: #0000004d;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease-in-out;
+}
+
+.card__delete-button:hover {
+    background: #ff6565;
+}
+
+.card__delete-icon {
+    width: 12px;
+    height: 15px;
+}
+
+@media screen and (max-width: 640px) {
+    .card__description {
+        font-size: 16px;
+    }
+
+    .card__like-icon {
+        width: 20px;
+        height: 18px;
+    }
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Spots Photo Library" />
+        <meta name="aythor" content="Abraham Efraim" />
+        <title>Spots</title>
+        <link rel="stylesheet" href="pages/index.css" />
+        <link rel="shortcut icon" href="favicon.ico" />
+    </head>
+    <body class="body">
+        <div class="page">
+            <!--Header-->
+            <header class="header">
+                <img
+                    src="images/Logo.svg"
+                    alt="Spots logo"
+                    class="header__logo"
+                />
+            </header>
+            <!--Header-->
+
+            <!--Content-->
+            <main class="content">
+                <!--Profile-->
+
+                <section class="profile">
+                    <div class="profile__container">
+                        <img
+                            src="images/Avatar.svg"
+                            alt="Avatar"
+                            class="profile__avatar"
+                        />
+
+                        <div class="profile__content">
+                            <div class="profile__text">
+                                <h1 class="profile__name">Bessie Coleman</h1>
+                                <p class="profile__desc">Civil Aviator</p>
+                            </div>
+
+                            <button class="profile__edit-button" type="button">
+                                <img
+                                    src="images/edit_logo.svg"
+                                    alt="edit logo"
+                                    class="profile__edit-button-sign"
+                                />
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <button class="profile__new-post" type="button">
+                        <img
+                            src="images/new_post_+.svg"
+                            alt="new post sign"
+                            class="profile__new-post-sign"
+                        />
+                        New Post
+                    </button>
+                </section>
+
+                <!--Profile End-->
+
+                <!--Cards-->
+                <section class="cards">
+                    <template id="card-template">
+                        <div class="card cards__card">
+                            <img src="" alt="image" class="card__image" />
+                            <div class="card__footer">
+                                <h2 class="card__description"></h2>
+                                <button
+                                    class="card__like-button"
+                                    type="button"
+                                ></button>
+                            </div>
+                            <button type="button" class="card__delete-button">
+                                <img
+                                    src="images/delete-icon.svg"
+                                    alt="delete icon"
+                                    class="card__delete-icon"
+                                />
+                            </button>
+                        </div>
+                    </template>
+                </section>
+                <!--Cards end-->
+            </main>
+            <!--Content end-->
+
+            <footer class="footer">
+                <p class="footer__text">2023 © Spots</p>
+            </footer>
+
+            <!--Modals-->
+
+            <!--Profile Modal-->
+            <div class="modal" id="profile-modal">
+                <div class="modal__container">
+                    <div class="modal__header">
+                        <h2 class="modal__title">Edit profile</h2>
+                        <button type="button" class="modal__close-button">
+                            <img
+                                src="images/close-icon.svg"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content">
+                        <form
+                            name="edit-input"
+                            class="modal__form"
+                            id="edit-profile-form"
+                        >
+                            <label for="name" class="modal__label">
+                                Name
+                                <input
+                                    id="name"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Type your name"
+                                    required
+                                    minlength="2"
+                                    maxlength="40"
+                                />
+                                <span
+                                    class="modal__error-text name-error"
+                                ></span>
+                            </label>
+                            <label for="description" class="modal__label">
+                                Description
+                                <input
+                                    id="description"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Describe yourself"
+                                    required
+                                    minlength="2"
+                                    maxlength="200"
+                                />
+                                <span
+                                    class="modal__error-text description-error"
+                                ></span>
+                            </label>
+                            <button type="submit" class="modal__submit-button">
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Profile Modal end-->
+
+            <!--Post Modal-->
+            <div class="modal" id="new-post-modal">
+                <div class="modal__container">
+                    <div class="modal__header">
+                        <h2 class="modal__title">New post</h2>
+                        <button type="button" class="modal__close-button">
+                            <img
+                                src="images/close-icon.svg"
+                                alt="close-button"
+                                class="modal__close-button-icon"
+                            />
+                        </button>
+                    </div>
+                    <div class="modal__content">
+                        <form
+                            name="edit-input"
+                            class="modal__form"
+                            id="new-post-form"
+                        >
+                            <label for="post-link" class="modal__label">
+                                Image link
+                                <input
+                                    id="post-link"
+                                    type="url"
+                                    class="modal__input"
+                                    placeholder="Paste a link to the picture"
+                                    required
+                                />
+                                <span
+                                    class="modal__error-text post-link-error"
+                                ></span>
+                            </label>
+                            <label for="post-caption" class="modal__label">
+                                Caption
+                                <input
+                                    id="post-caption"
+                                    type="text"
+                                    class="modal__input"
+                                    placeholder="Type your caption"
+                                    minlength="2"
+                                    maxlength="30"
+                                    required
+                                />
+                                <span
+                                    class="modal__error-text post-caption-error"
+                                ></span>
+                            </label>
+                            <button
+                                type="submit"
+                                class="modal__submit-button modal__submit-button_disabled"
+                                disabled
+                            >
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Post Modal end-->
+
+            <!--Picture Modal-->
+            <div class="modal" id="preview-modal">
+                <div class="modal__preview">
+                    <img
+                        src="images/avatar.jpg"
+                        alt="blank"
+                        class="modal__image"
+                    />
+                    <button
+                        type="button"
+                        class="modal__close-button modal__close-button-image"
+                    >
+                        <img
+                            src="images/close-icon-white.svg"
+                            alt="close-button"
+                            class="modal__close-button-icon"
+                        />
+                    </button>
+                    <div class="modal__image-caption-container">
+                        <p class="modal__image-caption"></p>
+                    </div>
+                </div>
+            </div>
+            <!--Picture Modal-->
+            <!--Modal end-->
+        </div>
+
+        <script src="scripts/index.js" type="module"></script>
+    </body>
+</html>
