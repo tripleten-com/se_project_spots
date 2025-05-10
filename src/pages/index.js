@@ -327,4 +327,5 @@ api.loadInitialContent()
 validatorProfile.enableValidation();
 validatorNewPost.enableValidation();
 validatorAvatar.enableValidation();
+
 // ---------------------------------------------------------------------
