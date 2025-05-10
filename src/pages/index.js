@@ -329,3 +329,4 @@ validatorNewPost.enableValidation();
 validatorAvatar.enableValidation();
 
 // ---------------------------------------------------------------------
+console.log(document.forms);
