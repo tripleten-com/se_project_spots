@@ -327,5 +327,6 @@ api.loadInitialContent()
 validatorProfile.enableValidation();
 validatorNewPost.enableValidation();
 validatorAvatar.enableValidation();
+
 // ---------------------------------------------------------------------
 console.log(document.forms);
